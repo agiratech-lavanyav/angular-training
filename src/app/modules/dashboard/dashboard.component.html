@@ -1,0 +1,154 @@
+
+<mat-toolbar >
+  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>My Dashboard</span>
+ <span class="example-spacer"></span>
+ <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+   <mat-icon>favorite</mat-icon>
+ </button> -->
+ <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <mat-icon>share</mat-icon>
+</button> -->
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-list class="listitems"role="list">
+          <mat-list-item role="listitem"><mat-icon>account_circle</mat-icon><span class="span"> Profile</span> </mat-list-item>
+          <mat-list-item role="listitem">	<mat-icon>assignment</mat-icon><span class="span">Timesheet</span></mat-list-item>
+          <mat-list-item role="listitem">	<mat-icon>announcement</mat-icon><span class="span">notices</span> </mat-list-item>
+          <mat-list-item role="listitem">	<mat-icon>work_off</mat-icon><span class="span">Leave</span></mat-list-item>
+          <mat-list-item role="listitem" routerLink="/line-chart" ><mat-icon>calendar_today</mat-icon><span class="span">Attendance</span></mat-list-item>
+          <mat-list-item role="listitem" routerLink="/employee-table" ><mat-icon>person</mat-icon><span class="span">Employee details</span></mat-list-item>
+          <mat-list-item role="listitem">	<mat-icon>delete</mat-icon><span class="span" (click)="logout()">Logout</span></mat-list-item>
+
+        </mat-list>   
+  </mat-drawer>
+  <div>
+    <mat-card class="main-content">
+      <h2 style="color:#2C3E50; font-size: 40px;">Welcome!!</h2>
+      <mat-card-content >
+
+          <div class="div-section"  fxFlex="100%"  fxLayout="row wrap" >
+              <div class="employee-status" fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
+                  <div class="performance">
+                      <h3 style="font-size:30px;">Performance Rate</h3>
+                      <img class="light" style="width: 50px;" src="../../assets/images/lightening.png" alt="">
+                      <span style="font-weight: bold; font-size: 30px;">76.89%</span>
+                  </div>    
+                  <div class="learning">
+                      <h3 style="font-size:30px;">Intermediate Learner</h3>
+                      <button mat-raised-button color="primary"style="font-weight: bold;">Explore more!!</button>
+                  </div>
+              </div>
+              <div class="employee-goal" fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
+                  <div class="all">
+                      <div class="circle-wrap">
+                        <div class="content1">
+                         <h4 style="font-size: 30px;">Weekly performance</h4>
+                        </div>
+                        <div class="circle">
+                          <div class="mask full-1">
+                            <div class="fill-1"></div>
+                          </div>
+                          <div class="mask half">
+                            <div class="fill-1"></div>
+                          </div>
+                          <div class="inside-circle"> 85% </div>
+                        </div>
+                      </div>
+                        <div class="circle-wrap">
+                          <div class="content2">
+                              <h4 style="font-size: 30px; font-weight: 500;" > Skills Updated</h4>                            
+                          </div>
+                          <div class="circle">
+                            <div class="mask full-2">
+                              <div class="fill-2"></div>
+                            </div>
+                            <div class="mask half">
+                              <div class="fill-2"></div>
+                            </div>
+                            <div class="inside-circle"> 65% </div>
+                          </div>
+                        </div>
+                          <div class="circle-wrap">
+                            <div class="content3">
+                              <h4 style="font-size: 30px;  font-weight: 500;">Overall Improvement </h4>
+                            </div>
+                            <div class="circle">
+                              <div class="mask full-3">
+                                <div class="fill-3"></div>
+                              </div>
+                              <div class="mask half">
+                                <div class="fill-3"></div>
+                              </div>
+                              <div class="inside-circle"> 75% </div>
+                            </div>
+                          </div>
+                        </div>
+              </div>
+          </div>
+      </mat-card-content>
+      
+     
+      <mat-card-content>
+          <div class="div-section1"  fxFlex="100%"  fxLayout="row wrap" >
+              <div fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" >
+                  <div class="bigDiv" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+                      <div class="bigDiv-data">
+                          <div class="todos">
+                            <h2>My Todos</h2>
+                              <ul>
+                                  <li>Learn new</li>
+                                  <li>Exploring ideas</li>
+                                  <li>Finishing the project before deadline</li>
+                                  <li>Implementing ideas</li>
+                                  <li>Meeting</li>
+                              </ul>
+                              <button mat-raised-button color="primary">Add</button>
+
+                          </div>
+                          <div class="review">
+                              <p>You have nothing to review!!!</p>
+                              <img src="../../assets/images/notice.png" alt="">
+                          </div>
+                          <div class="skills">
+                            <h2>My Skills</h2>
+                              <p>Get your skills up-to-date</p>
+                              <p>Start tracking your skills and get ready to learn more!</p>
+                              <br><br>
+                              <button mat-raised-button color="primary">Add Skills</button>
+                          </div>
+                          <div class="acheivements">
+                            <h2>Acheivements</h2>
+                            <p>All your achievements will be displayed here!!</p>
+                            <img src="../../assets/images/win.png" alt="">
+                          </div>
+                          <div class="upcoming-holidays">
+                            <h2>Upcoming Holidays</h2>
+                              <ul>
+                                  <li>15 Aug Monday <span>Independence Day</span></li><br>
+                                  <li>31 Aug Wednesday <span>Ganesh Chatturthi</span></li><br>
+                                  <li>02 Oct Sunday 
+                                     <span>Gandhi Jayanthi</span> </li>
+
+                              </ul>
+                          </div>
+                          <img class="girl" src="../../assets/images/girl.png" alt="">
+                          
+                      </div> 
+
+              
+                  </div>
+              </div>
+          </div>
+      </mat-card-content>
+     
+    </mat-card>
+      
+  </div>
+
+</mat-drawer-container>

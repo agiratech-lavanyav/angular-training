@@ -1,0 +1,38 @@
+::ng-deep app-employee-table{ 
+  .employee-details{ 
+    margin: 2em;
+
+      &__table {
+        overflow: auto;
+        width: 100%;
+
+        th,td{
+          padding: 10px 20px;
+          background-color:	#FAF9F6;
+          color: rgba(0, 0, 0, 0.952);
+        }
+
+        &--firstTableHeader th{
+          background: #358e9c;  
+          color: #fff;
+          font-size: 1.2em;
+        }
+
+        &--checkbox{
+          color: black;
+        }
+
+        &--secondTableHeader th{
+          background-color:			#51a8b6;
+          font-size: 1.2em;
+        }
+      }
+      
+      &__table-paginator{
+        background: #2C3E50;  
+        background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  
+        background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
+      }
+      
+    }  
+}

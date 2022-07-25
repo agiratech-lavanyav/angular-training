@@ -1,0 +1,283 @@
+::ng-deep app-dashboard{  
+  mat-drawer-container{
+    height: 100vh;
+    color: black;
+    background-color: #fff;
+  }
+  .main-content{
+    margin: 1rem ;
+    background-color: #fff;
+    }
+  mat-toolbar {
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
+  }
+  mat-list-item:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: black;
+  }
+  .example-sidenav{
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
+  }
+  .span{
+    padding: 20px;
+  }
+  .div-section{
+    border-radius: 20px;
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
+    background: linear-gradient(to right, #4CA1AF, #2C3E50);
+  }
+  .employee-status{
+    font-size: 20px;
+    min-height: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    text-align: center;
+    .performance{
+      padding: 4em;
+      margin-right: 10px;
+      border-radius: 20px;
+      border: 1px solid #2C3E50 ;
+    }
+    .learning{
+      padding: 4em;
+      border-radius: 20px;
+      border: 1px solid #2C3E50 ;
+    }
+  }
+  .employee-goal{
+    min-height: 260px;
+    .all{
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .circle{
+        position: relative;
+
+      }
+      .circle-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      .content1, .content2, .content3{
+      padding-top: 70px;
+      font-size: 3em;
+      }
+      
+      .circle-wrap .circle .mask,
+      .circle-wrap .circle .fill-1,
+      .circle-wrap .circle .fill-2,
+      .circle-wrap .circle .fill-3 {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        border-radius: 50%;
+      }
+      
+      .circle-wrap .circle .mask {
+        clip: rect(0px, 150px, 150px, 75px);
+      }
+      
+      .circle-wrap .inside-circle {
+        width: 124px;
+        height: 124px;
+        border-radius: 50%;
+        background: #212020;
+        line-height: 120px;
+        text-align: center;
+        margin-top: 13px;
+        margin-left: 13px;
+        color: white;
+        position: absolute;
+        z-index: 100;
+        font-weight: 700;
+        font-size: 3em;
+      }      
+      .mask .fill-1 {
+        clip: rect(0px, 75px, 150px, 0px);
+        background-color: #ec0c0c;
+      }
+      
+      .mask.full-1,
+      .circle .fill-1 {
+        animation: fill-1 ease-in-out 3s;
+        transform: rotate(153deg);
+      }
+      
+      @keyframes fill-1 {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(153deg);
+        }
+      }
+      
+      /* 2nd bar */
+      
+      .mask .fill-2 {
+        clip: rect(0px, 75px, 150px, 0px);
+        background-color: yellow;
+      }
+      
+      .mask.full-2,
+      .circle .fill-2 {
+        animation: fill-2 ease-in-out 3s;
+        transform: rotate(117deg);
+      }
+      
+      @keyframes fill-2{
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(117deg);
+        }
+      }
+      
+      /* 3rd progress bar */
+      .mask .fill-3 {
+        clip: rect(0px, 75px, 150px, 0px);
+        background-color: #23b9ea;
+      }
+      
+      .mask.full-3,
+      .circle .fill-3 {
+        animation: fill-3 ease-in-out 3s;
+        transform: rotate(135deg);
+      }
+      
+      @keyframes fill-3{
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(135deg);
+        }
+      }
+  }
+  .bigDiv{
+    font-size: 20px;
+    min-height: 580px;
+    color: black;
+    .bigDiv-data{
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(3,1fr);
+        padding: 4em 0em 0em;
+        .todos{
+          height: 200px;
+          padding: 2em;
+          border: 1px solid #2C3E50 ;
+          border-radius: 20px;
+          h2{
+            font-weight: bold;
+          }
+        }
+        .todos:hover{
+          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          color: #fff;
+          box-shadow: 0 30px 90px #2C3E50; 
+        }
+        .review{
+          height: 200px;
+          padding: 2em;
+          border-radius: 20px;
+          border: 1px solid #2C3E50 ;
+          img{
+            height: 150px;
+            width: 150px;
+            padding: 20px 0px 0px 40px; 
+          }
+        }
+        .review:hover{
+          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          color: #fff;
+          box-shadow: 0 30px 90px #2C3E50; 
+        }
+        .skills{
+          height: 200px;
+          padding: 2em;
+          border-radius: 20px;
+          border: 1px solid #2C3E50 ;
+          h2{
+            font-weight: bold;
+          }
+        }
+        .skills:hover{
+          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          color: #fff;
+          box-shadow: 0 30px 90px #2C3E50; 
+        }
+        .acheivements{
+          height: 200px;
+          padding: 2em;
+          border-radius: 20px;
+          border: 1px solid #2C3E50 ;
+          img{
+            width: 150px;
+            height: 150px;
+          }
+          h2{
+            font-weight: bold;
+          }
+        }
+        .acheivements:hover{
+          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          color: #fff;
+          box-shadow: 0 30px 90px #2C3E50; 
+        }
+        .upcoming-holidays{
+          height: 200px;
+          padding: 2em;
+          border-radius: 20px;
+          border: 1px solid #2C3E50 ;
+          h2{
+            font-weight: bold;
+          }
+        }
+        .upcoming-holidays:hover{
+          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          color: #fff;
+          box-shadow: 0 30px 90px #2C3E50; 
+        }
+    }
+  }
+  @media screen and (max-width: 768px){
+    .employee-status{
+      flex-direction: column;
+      font-size: 5px;
+      padding: 4em;
+      .performance{
+        margin-right: 0px;
+        margin-bottom: 20px;
+      }
+    }
+    .circle-wrap {
+      flex-direction: row;
+    }
+    .bigDiv-data{
+      grid-template-columns: repeat(1, 1fr) !important;
+      padding: 0em !important;
+      .girl{
+        width: 326px;
+        height: 230px;
+      }
+    } 
+    .employee-goal{
+      display: none;
+    }
+    
+  }
+}
+
+
