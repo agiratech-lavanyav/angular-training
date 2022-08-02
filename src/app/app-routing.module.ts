@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'line-chart', component: LineChartComponent },
   { path: '', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),canActivate: [AuthguardGuard]},
-  { path: 'employee-table', loadChildren: () => import('./modules/employee-table/employee-table.module').then(m => m.EmployeeTableModule) }
+  { path: 'employee-table', loadChildren: () => import('./modules/employee-table/employee-table.module').then(m => m.EmployeeTableModule) },
+  { path: 'details', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) },
+  { path: 'details/:empid', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) }
 ];
 
 @NgModule({
