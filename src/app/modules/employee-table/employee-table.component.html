@@ -1,3 +1,8 @@
+<div class="home">
+  <button routerLink="/dashboard">
+      <mat-icon style="font-size:2em;color: #fff;">keyboard_arrow_left</mat-icon>
+  </button>
+</div>
 <div class="employee-details">
   
   <table class="employee-details__table" mat-table [dataSource]="empTabDataSource" matSort #employeeTableSort="matSort">
@@ -7,15 +12,14 @@
 
       <ng-container matColumnDef="select">
           <th  mat-header-cell *matHeaderCellDef>
-            <mat-checkbox
+            <mat-checkbox 
                       (change)="$event ? masterToggle() : null"
                       [checked]="selection.hasValue() && isAllSelected()"
                       [indeterminate]="selection.hasValue() && !isAllSelected()"> 
-
             </mat-checkbox>
           </th>
           <td  mat-cell *matCellDef="let row">
-            <mat-checkbox
+            <mat-checkbox style="background-color: unset !important"
                       (click)="$event.stopPropagation()"
                       (change)="$event ? selection.toggle(row) : null"
                       [checked]="selection.isSelected(row)">
@@ -142,12 +146,11 @@
         <th mat-header-cell *matHeaderCellDef> 
           <form>
             <mat-form-field>
-              <input type="text" placeholder="Select Gender"  matInput [formControl]="empGender" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{ option }}
-                </mat-option>
-              </mat-autocomplete>
+              <mat-label>Select Gender</mat-label>
+              <mat-select>
+                <mat-option value="option1">Male</mat-option>
+                <mat-option value="option2">Female</mat-option>
+              </mat-select>
             </mat-form-field>
           </form>
         </th>

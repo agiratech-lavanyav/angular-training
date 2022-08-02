@@ -8,15 +8,15 @@
     margin: 1rem ;
     background-color: #fff;
     }
-  mat-toolbar {
+  .toolbar {
     background: #2C3E50;  
     background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  
     background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
   }
   mat-list-item:hover{
     cursor: pointer;
-    background-color: #fff;
-    color: black;
+    background-color: #2C3E50;
+    // color: black;
   }
   .example-sidenav{
     background: #2C3E50;  

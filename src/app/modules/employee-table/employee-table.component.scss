@@ -1,4 +1,20 @@
 ::ng-deep app-employee-table{ 
+  .home{
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); 
+    height: 70px;
+    button{
+        background-color: transparent;
+        border-style: none;
+        margin: 1.5em;
+    }
+    button:hover{
+        border-radius: 50px;
+        background-color: #2C3E50;
+    }
+}
+
   .employee-details{ 
     margin: 2em;
 
@@ -11,15 +27,13 @@
           background-color:	#FAF9F6;
           color: rgba(0, 0, 0, 0.952);
         }
-
+        .mat-checkbox-inner-container-no-side-margin{
+          background-color: #5b6f83 !important;
+        }
         &--firstTableHeader th{
           background: #358e9c;  
           color: #fff;
           font-size: 1.2em;
-        }
-
-        &--checkbox{
-          color: black;
         }
 
         &--secondTableHeader th{

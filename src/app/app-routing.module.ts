@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'employee-table', loadChildren: () => import('./modules/employee-table/employee-table.module').then(m => m.EmployeeTableModule) },
   { path: 'details', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) },
   { path: 'details/:empid', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) }
+  
 ];
 
 @NgModule({
