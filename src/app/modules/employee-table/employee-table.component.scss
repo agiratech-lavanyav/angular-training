@@ -1,8 +1,8 @@
 ::ng-deep app-employee-table{ 
   .home{
     background: #2C3E50;  
-    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
-    background: linear-gradient(to right, #4CA1AF, #2C3E50); 
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+    background: linear-gradient(to right, #569bc9, #2C3E50); 
     height: 70px;
     button{
         background-color: transparent;
@@ -27,9 +27,12 @@
           background-color:	#FAF9F6;
           color: rgba(0, 0, 0, 0.952);
         }
-        .mat-checkbox-inner-container-no-side-margin{
-          background-color: #5b6f83 !important;
+        .mat-checkbox-frame{
+          border-color: #596d81;
         }
+        // .mat-checkbox-inner-container-no-side-margin{
+        //   background-color: #5b6f83 !important;
+        // }
         &--firstTableHeader th{
           background: #358e9c;  
           color: #fff;
@@ -44,8 +47,8 @@
       
       &__table-paginator{
         background: #2C3E50;  
-        background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  
-        background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
+        background: -webkit-linear-gradient(to right, #569bc9, #2C3E50);  
+        background: linear-gradient(to right, #569bc9, #2C3E50); ;
       }
       
     }  

@@ -2,15 +2,15 @@
 
     .home{
         background: #2C3E50;  
-        background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
-        background: linear-gradient(to right, #4CA1AF, #2C3E50); 
+        background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+        background: linear-gradient(to right, #569bc9, #2C3E50); 
         height: 70px;
         button{
             background-color: transparent;
             border-style: none;
             margin: 1.5em;
         }
-        button:hover{
+        .icon:hover{
             border-radius: 50px;
             background-color: #2C3E50;
         }
@@ -25,7 +25,7 @@
             width: 50%;
 
             &--blob {
-            fill: #023F92;
+            fill:  #569bc9; 
             width: 40vmax;
             position:relative;
             
@@ -49,20 +49,27 @@
         }
         &__info{
             width: 50%;
-            margin-top: 5em;
+            margin-top: 1em;
 
-            header{
-                font-size: 2em;
-                padding-left: 45px;
+            &--title{
+                display: flex;
+                align-items: center;
                 padding-bottom: 30px;
+
+                header{
+                    font-size: 2em;
+                    padding-left: 45px;
+                }
             }
-            
 
             table{
                 font-size: 1em;
                 padding: 4em 0em;
                 border: 2px solid;
                 border-radius: 20px;
+                // display: block;
+                overflow: scroll;
+
                 tr,td{
                     padding: 0.8em 2em;
                 }

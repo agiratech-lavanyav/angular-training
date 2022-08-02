@@ -161,6 +161,7 @@ export interface employeeDetails {
     gender:string;
     dob: any;
     department: string;
+    yr_of_exp:number;
     yr_of_joining: number;
     email: any;
     contact: number;
