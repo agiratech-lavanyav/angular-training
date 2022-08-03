@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),canActivate: [AuthguardGuard]},
   { path: 'employee-table', loadChildren: () => import('./modules/employee-table/employee-table.module').then(m => m.EmployeeTableModule) },
   { path: 'details', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) },
-  { path: 'details/:empid', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) }
-  
+  { path: 'details/:empid', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) },
+  { path: 'edit-profile', loadChildren: () => import('./modules/edit-profile/edit-profile.module').then(m => m.EditProfileModule) },
 ];
 
 @NgModule({

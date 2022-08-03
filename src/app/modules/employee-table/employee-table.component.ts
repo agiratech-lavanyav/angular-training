@@ -15,11 +15,15 @@ import { ProfileService } from 'src/app/profile.service';
   templateUrl: './employee-table.component.html',
   styleUrls: ['./employee-table.component.scss']
 })
+
 export class EmployeeTableComponent {
   displayedColumns = ['select','position', 'empID','name','gender','dob','department','yr_of_joining','email','contact'];
 
-  constructor(private employeeService: ProfileService){}
-  empTabDataSource = new MatTableDataSource<employeeDetails>(this.employeeService.ELEMENT_DATA);
+  constructor(private employeeService: ProfileService){
+    // localStorage.setItem('item',JSON.stringify(this.employeeService.ELEMENT_DATA));
+  }
+
+  empTabDataSource = new MatTableDataSource<employeeDetails>(JSON.parse(localStorage.getItem('item')!));
   selection = new SelectionModel<employeeDetails>(true, []);
 
 
@@ -174,4 +178,8 @@ export interface employeeDetails {
 				
 
 
+
+function item(item: any): string {
+  throw new Error('Function not implemented.');
+}
 

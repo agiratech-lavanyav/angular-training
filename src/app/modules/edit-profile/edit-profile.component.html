@@ -1,0 +1,59 @@
+<div class="editProfile">
+	<h1>EDIT PROFILE</h1>
+	<form [formGroup]="details">
+		<h2>PERSONAL DETAILS</h2>
+
+		<div class="editProfile__row1" >
+			<div class="editProfile__row1--name" >
+				<mat-form-field >
+					<mat-label >Fullname</mat-label>
+					<input matInput formControlName="name">
+				</mat-form-field>
+			</div>
+		
+			<div class="editProfile__row1--gender" >
+				<mat-form-field >
+					<mat-label>Choose Gender</mat-label>
+					<mat-select formControlName="gender">
+							<mat-option value="Male">Male</mat-option>
+							<mat-option value="Female">Female</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+
+		<div class="editProfile__row2">
+			<div class="editProfile__row2--experience" >
+				<mat-form-field  >
+					<mat-label >Experience</mat-label>
+					<input matInput formControlName="yr_of_exp">
+				</mat-form-field>
+			</div>
+		</div>
+
+		<h2>CONTACT DETAILS</h2>
+
+		<div class="editProfile__row3" >
+			<div class="editProfile__row3--email">
+				<mat-form-field >
+					<mat-label>Email</mat-label>
+					<input matInput formControlName="email">
+				</mat-form-field>
+			</div>
+			<div class="editProfile__row3--contact">
+				<mat-form-field >
+					<mat-label>Contact</mat-label>
+					<input matInput formControlName="contact">
+				</mat-form-field>
+			</div>
+		</div>
+	</form>
+	<div mat-dialog-actions>
+		
+		<button mat-raised-button mat-dialog-close [ngStyle]="{'background-color':'green'}" >Close</button>
+		<button mat-raised-button  color="primary" (click)="saveDetail()">Save</button>
+	</div>
+
+
+</div>
+
