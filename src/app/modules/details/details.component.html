@@ -1,11 +1,9 @@
 <div class="home">
     <button routerLink="/employee-table">
-        <mat-icon class="icon" style="font-size:2em;color: #fff;">keyboard_arrow_left</mat-icon><span style="font-size: 30px; font-weight:bold; padding-left:20px; color:#fff">EMPLOYEE-DETAILS</span>
+        <mat-icon class="icon" [ngStyle]="{'font-size':'2em','color': '#fff'}">keyboard_arrow_left</mat-icon><span class="title" [ngStyle]="{'font-size': '30px', 'font-weight':'bold', 'padding-left':'20px', 'color':'#fff'}">EMPLOYEE-DETAILS</span>
     </button>
 </div>
 <div class="profile">
-
-    
     <div class="profile__background" ngFor="let data is in employee-details">
         <div class="profile__background--blob">
             <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 350">
@@ -22,8 +20,8 @@
     <div class="profile__info">
         <div class="profile__info--title">
             <div><header>PROFILE</header></div>    
-            <div style="padding-left: 40px;">
-                <button (click)="openDialog()"  mat-mini-fab  aria-label="Example icon button with a menu icon">
+            <div [ngStyle]="{'padding-left': '40px'}">
+                <button (click)="openDialog()" mat-mini-fab  aria-label="Example icon button with a menu icon">
                     <mat-icon >edit</mat-icon>
                 </button>
             </div>
@@ -40,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>Date Of Birth</td>
-                    <td>{{empInd[0].dob}}</td>
+                    <td>{{empInd[0].dob | date:"dd/MM/YYYY"}}</td>
                 </tr>
                 <tr>
                     <td> Age</td>

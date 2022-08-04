@@ -1,6 +1,6 @@
 <div class="home">
   <button routerLink="/dashboard">
-      <mat-icon style="font-size:2em;color: #fff;">keyboard_arrow_left</mat-icon>
+      <mat-icon [ngStyle]="{'font-size':'2em','color': '#fff'}">keyboard_arrow_left</mat-icon>
   </button>
 </div>
 <div class="employee-details">
@@ -69,7 +69,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Date Of Birth
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.dob | date: "dd/MM/YYYY"}} </td>
       </ng-container>
   
       <!-- Department Column -->

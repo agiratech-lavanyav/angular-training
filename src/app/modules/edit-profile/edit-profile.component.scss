@@ -4,6 +4,7 @@
         max-width: 100%;
         height: 100%;
         font-size: 18px;
+
         .mat-form-field-infix{
             width: 300px !important;
         }
@@ -18,29 +19,40 @@
             justify-content: space-between;
 
             &--name{
-                padding:  1em;
+                padding: 0em 1em ;
             }
             
             &--gender{
                
-                padding: 1em ;
+                padding: 0em 1em ;
             }
         }
         .editProfile__row2{
-            // display: flex;
-            // justify-content: space-between;
+            display: flex;
+            justify-content: space-between;
             
             &--experience{
-                padding: 1em;
+                padding: 0em 1em;
+            }
+            &--department{
+                padding: 0em 1em;
             }
         }
         .editProfile__row3{
+            padding: 0em 1em;
+        }
+        .editProfile__row4{
         &--email{
-            padding: 1em;
+            padding: 0em 1em;
         }
         &--contact{
-            padding: 1em;
+            padding: 0em 1em;
         }
+        }
+
+        &__actions{
+            display: flex;
+            justify-content: space-between;
         }
         // .cdk-overlay-container{
         //     .mat-dialog-container {
@@ -50,4 +62,23 @@
         //     }
         // }
     } 
+    @media screen and (max-width: 900px){
+        .editProfile{
+            font-size: 15px;
+
+            .mat-form-field-infix{
+                width: 233px !important;
+            }
+            h1{
+                font-size: 1.3em;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .editProfile__row1{
+                flex-direction: column;
+            }
+
+        }
+    }
 } 

@@ -22,6 +22,8 @@ export class EditProfileComponent implements OnInit {
     'name': new FormControl(this.data[0].name,Validators.required),
     'gender': new FormControl(this.data[0].gender,Validators.required),
     'yr_of_exp': new FormControl(this.data[0].yr_of_exp,Validators.required),
+    'dob': new FormControl(new Date(this.data[0].dob),Validators.required),
+    'department': new FormControl(this.data[0].department,Validators.required),
     'email': new FormControl(this.data[0].email,Validators.required),
     'contact': new FormControl(this.data[0].contact,Validators.required)
   });
@@ -32,6 +34,8 @@ export class EditProfileComponent implements OnInit {
     this.empUpdate[this.empList].name = this.details.controls['name'].value;
     this.empUpdate[this.empList].gender = this.details.controls['gender'].value;
     this.empUpdate[this.empList].yr_of_exp = this.details.controls['yr_of_exp'].value;
+    this.empUpdate[this.empList].dob = this.details.controls['dob'].value;
+    this.empUpdate[this.empList].department = this.details.controls['department'].value;
     this.empUpdate[this.empList].email = this.details.controls['email'].value;
     this.empUpdate[this.empList].contact = this.details.controls['contact'].value;
     localStorage.setItem('item',JSON.stringify(this.empUpdate));
