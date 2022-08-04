@@ -17,6 +17,8 @@ import { ProfileService } from 'src/app/profile.service';
 })
 
 export class EmployeeTableComponent {
+  storedData:any;
+
   displayedColumns = ['select','position', 'empID','name','gender','dob','department','yr_of_joining','email','contact'];
 
   constructor(private employeeService: ProfileService){
@@ -25,7 +27,7 @@ export class EmployeeTableComponent {
 
   empTabDataSource = new MatTableDataSource<employeeDetails>(JSON.parse(localStorage.getItem('item')!));
   selection = new SelectionModel<employeeDetails>(true, []);
-
+  isTableEdit = false;
 
 
   isAllSelected() {
@@ -151,7 +153,24 @@ ngAfterViewInit() {
   this.empTabDataSource.sort = this.employeeTableSort;
 
 }
+// getData(){
+//   this.storedData = JSON.parse(localStorage.getItem('item')!); 
+//   console.log(this.storedData);
+// }
+editOn(){
+  this.isTableEdit = true;
+  //e.isEdit = true;
 }
+saveOn(){
+  this.storedData = this.empTabDataSource.data;
+  localStorage.setItem('item',JSON.stringify(this.storedData));
+  this.isTableEdit = true;
+  this.isTableEdit= false;
+}
+
+}
+
+
 
   // constructor() { }
 
@@ -170,7 +189,9 @@ export interface employeeDetails {
     email: any;
     contact: number;
     image: any;
+    isEdit:boolean;
 }
+
 
   
   
@@ -179,7 +200,7 @@ export interface employeeDetails {
 
 
 
-function item(item: any): string {
-  throw new Error('Function not implemented.');
-}
+// function item(item: any): string {
+//   throw new Error('Function not implemented.');
+// }
 
