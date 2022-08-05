@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'details', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) },
   { path: 'details/:empid', loadChildren: () => import('./modules/details/details.module').then(m => m.DetailsModule) },
   { path: 'edit-profile', loadChildren: () => import('./modules/edit-profile/edit-profile.module').then(m => m.EditProfileModule) },
+  
 ];
 
 @NgModule({
