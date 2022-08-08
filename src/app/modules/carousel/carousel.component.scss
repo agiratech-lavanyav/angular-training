@@ -1,4 +1,4 @@
-
+::ng-deep app-carousel{
   
   .slider {
     background-color: #569bc9;
@@ -125,4 +125,19 @@
       box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
     }
   }
+
+  @media screen and (max-width: 768px){
+    .slider{
+      padding-top: 90% !important;
+
+      &__inner{
+        &--contents{
+          padding: 0rem;
+
+        }
+
+      }
+    }
+  }
+}
   

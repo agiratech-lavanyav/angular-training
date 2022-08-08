@@ -1,4 +1,8 @@
-::ng-deep app-dashboard{  
+body{
+  overflow-y: hidden !important;
+}
+::ng-deep app-dashboard{ 
+   
   mat-drawer-container{
     height: 100vh;
     color: black;
