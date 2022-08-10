@@ -22,10 +22,20 @@
         overflow: auto;
         width: 100%;
 
+        // .mat-form-field-label-wrapper{
+        //   margin-left: 25px;
+        // }
+        .mat-form-field-appearance-outline .mat-form-field-infix {
+          padding:5px 0px; 
+        }
+
         th,td{
           padding: 10px 20px;
           background-color:	#FAF9F6;
           color: rgba(0, 0, 0, 0.952);
+          border: 1px solid #358e9c;
+          
+          
         }
         .mat-checkbox-frame{
           border-color: #596d81;

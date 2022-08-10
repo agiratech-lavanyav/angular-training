@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import {MatSortModule} from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+
 
 
 
@@ -27,9 +30,7 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSortModule,
     MatSelectModule,
     MatAutocompleteModule,
-   
-
-    
+    MatSlideToggleModule
   ]
 })
 export class EmployeeTableModule { }

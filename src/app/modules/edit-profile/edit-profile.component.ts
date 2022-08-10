@@ -14,6 +14,7 @@ export class EditProfileComponent implements OnInit {
   empUpdate: any;
   empList: any;
   updateValue: any;
+  employeeUpdate: any;
 
  
   constructor(public dialogRef: MatDialogRef<EditProfileComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private route:Router, private formBuilder: FormBuilder) { }
@@ -33,7 +34,6 @@ export class EditProfileComponent implements OnInit {
   });
 
   saveDetail(){
-    console.log("Save details called");
     this.empUpdate = JSON.parse(localStorage.getItem('item')!);
 
     this.empList = this.empUpdate.findIndex((element:any) => {return element.empID == this.data[0].empID});
@@ -41,7 +41,6 @@ export class EditProfileComponent implements OnInit {
     // var index: any = this.empUpdate.indexOf(this.empList);
 
     // console.log("Index is",index);
-    console.log(this.empList);
 
     var updateValue: any = {
       position : this.empUpdate[this.empList].position,
@@ -60,8 +59,12 @@ export class EditProfileComponent implements OnInit {
 
     this.empUpdate[this.empList] = updateValue;
     localStorage.setItem('item',JSON.stringify(this.empUpdate));
+    this.empUpdate = JSON.parse(localStorage.getItem('item')!);
+
     this.dialogRef.close();
-    window.location.reload();
+
+    // isUpdate: true; 
+    // window.location.reload();
 
     // this.route.navigate(['/details/',this.empList.empID]);
   }

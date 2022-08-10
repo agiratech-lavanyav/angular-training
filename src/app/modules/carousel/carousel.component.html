@@ -1,33 +1,102 @@
-  <div class="slider">
-    <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
-    <input type="radio" name="slider" title="slide2" class="slider__nav"/>
-    <input type="radio" name="slider" title="slide3" class="slider__nav"/>
-    <input type="radio" name="slider" title="slide4" class="slider__nav"/>
+<div class="carousel">
+  <div class="carousel__container">
+
+    <input type="radio" name="slider" #item1 id="item-1" checked>
+    <input type="radio" name="slider" #item2 id="item-2">
+    <input type="radio" name="slider" #item3 id="item-3">
+
+    <div class="carousel__container--message">
+
+      <label class="carousel__container--message--card" for="item-1" id="song-1">
+        <div class="carousel__container--message--card--division">
+          <img  src="../../../assets/images/118.png" alt="">
+        </div>
+        <div class="carousel__container--message--card--content">
+          <span>JOHN -</span>
+          <span>Analyst</span>
+          <p [ngStyle]="{'font-size':'20px','padding':'3em 0em','text-align':'start'}">" Not giving employees enough space between desks or
+             trying to cram too many people into too small of
+              a space will create instant friction. "</p>
+        </div>
+      </label>
+
+      <label class="carousel__container--message--card" for="item-2" id="song-2">
+        <div class="carousel__container--message--card--division">
+          <img src="../../../assets/images/121.png" alt="">
+        </div>
+        <div class="carousel__container--message--card--content">
+          <span>ADAM -</span>
+          <span>Developer</span>
+          <p [ngStyle]="{'font-size':'20px', 'padding':'3em 0em', 'text-align':'start'}">" Space overlap is a huge problem for companies
+            with shared facilities. Trying to use a conference
+            room that’s already occupied disrupts work for both parties. "</p>
+        </div>
+      </label>
+
+      <label class="carousel__container--message--card" for="item-3" id="song-3">
+        <div class="carousel__container--message--card--division">
+          <img src="../../../assets/images/128.png" alt="">
+        </div>
+        <div class="carousel__container--message--card--content">
+          <span>HAZEL -</span>
+          <span>Developer</span>
+          <p [ngStyle]="{'font-size':'20px', 'padding':'3em 0em','text-align':'start'}">" Privacy areas, such as phone booths, are a great solution.
+             Quiet workspaces, private meeting rooms, and discrete hot desks are
+              all great options for those days when total focus is required and
+               interruptions can't be tolerated."</p>
+        </div>
+      </label>
+
+    </div>
+    <!-- <div [ngStyle]="{'background-color':'blue','display':'flex','justify-content':'space-between','align-items':'center'}">
+      <div> <button (click)="prev()"> <mat-icon>keyboard_arrow_left</mat-icon> </button></div>
+      <div> <button (click)="next()"> <mat-icon>keyboard_arrow_right</mat-icon> </button></div>
+    </div> -->
+
+
+    <!-- <ul class="snapper_nextprev">
+      <li class="snapper_nextprev_item">
+        <a href="#prev" class="snapper_nextprev_prev">Prev</a>
+      </li>
+      <li class="snapper_nextprev_item">
+        <a href="#next" class="snapper_nextprev_next">Next</a>
+      </li>
+    </ul> -->
+
+    <div class="prev-arrow arrow">
+      <label [ngStyle]="{'color':'black'}" for= "item-1" id= "prev-1-arrow">
+        <i class= "fa fa-arrow-left"></i>
+      </label>
+      <label for= "item-2" id= "prev-2-arrow">
+        <i class= "fa fa-arrow-left"></i>
+      </label>
+      <label for= "item-3" id= "prev-3-arrow">
+        <i class= "fa fa-arrow-left"></i>
+      </label>
+    </div>
+    <!-- Start Prevese Arrow -->
+  
+    <!-- Start next Arrow -->
+    <div class="next-arrow arrow">
+      <label [ngStyle]="{'color':'black'}" for= "item-1" id= "next-1-arrow">
+        <i class= "fa fa-arrow-right"></i>
+      </label>
+      <label for= "item-2" id= "next-2-arrow">
+        <i class= "fa fa-arrow-right"></i>
+      </label>
+      <label for= "item-3" id= "next-3-arrow">
+        <i class= "fa fa-arrow-right"></i>
+      </label>
+    </div>
+    
+  </div>
+  
+</div> 
+
+
+
+
+
+
   
 
-    <div class="slider__inner">
-      <div class="slider__inner--contents">
-        <h2 [ngStyle]="{'color':'#fff' , 'font-size':'1.5em' , 'font-weight':'bold'}">-- Donald ( Analyst )</h2>
-        <p class="slider__inner--contents--txt">"a company that inspires me, a product that I feel passionate about, a position that challenges me and 
-          stretches me into different areas, management that encourages and empowers me to do my best and great work environment and team spirit."</p>
-      </div>
-      <div class="slider__inner--contents">
-        <h2 [ngStyle]="{'color':'#fff' , 'font-size':'1.5em', 'font-weight':'bold'}" >-- Adam ( Development )</h2>
-        <p class="slider__inner--contents--txt">"Having worked with big MNCs for over 6 years before moving to Jeavio, there was a lot of anxiety to work for
-           a mid-sized privately held company, but Jeavio laid all my concerns to rest. I had not heard about Jeavio before joining,
-            however, the first week into my job I realized that I am surrounded by capable, experienced & hardworking people."</p>
-      </div>
-      <div class="slider__inner--contents">
-        <h2 [ngStyle]="{'color':'#fff' , 'font-size':'1.5em' , 'font-weight':'bold'}" >-- Vasan ( Tester )</h2>
-        <p class="slider__inner--contents--txt">"The culture is transparent and every employee, irrespective of their position is given a chance to be heard,
-           and there are ample opportunities available to those who want to build a career here. It is a young organization with a
-            contemporary, innovative, and entrepreneurial approach that distinguishes it from its peers."</p>
-      </div>
-      <div class="slider__inner--contents">
-        <h2 [ngStyle]="{'color':'#fff' , 'font-size':'1.5em' , 'font-weight':'bold'}">-- Douglas ( Developer )</h2>
-        <p class="slider__inner--contents--txt">"It provides a very conducive environment to learn, grow and prosper. As a curious employee, I got the right 
-          exposure as I had the opportunity to connect with learned colleagues, enthusiastic clients and start-up founders. The learning
-           is great through practical experiences and the growth opportunities are good."</p>
-      </div>
-    </div>
-  </div>

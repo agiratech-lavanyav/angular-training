@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { ProfileService } from 'src/app/profile.service';
+import { Output, EventEmitter} from '@angular/core';
+
+
 
 
 @Component({
@@ -18,8 +21,10 @@ import { ProfileService } from 'src/app/profile.service';
 
 export class EmployeeTableComponent {
   storedData:any;
+  // isChecked:boolean=true;
 
-  displayedColumns = ['select','position', 'empID','name','gender','dob','department','yr_of_joining','email','contact'];
+
+  displayedColumns = ['select','empID','name','gender','dob','department','yr_of_joining','email','contact'];
 
   constructor(private employeeService: ProfileService){
     // localStorage.setItem('item',JSON.stringify(this.employeeService.ELEMENT_DATA));
@@ -40,7 +45,7 @@ export class EmployeeTableComponent {
         this.selection.clear() :
         this.empTabDataSource.data.forEach(row => this.selection.select(row));
   }
-
+  
   // Autocomplete for gender section
 
   empGender = new FormControl();
