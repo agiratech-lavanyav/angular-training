@@ -1,102 +1,76 @@
-<div class="carousel">
-  <div class="carousel__container">
+<section id= "slider">
 
-    <input type="radio" name="slider" #item1 id="item-1" checked>
-    <input type="radio" name="slider" #item2 id="item-2">
-    <input type="radio" name="slider" #item3 id="item-3">
+  <!-- Start Slider Checked -->
+  <input type= "radio" name="slider" id= "slide-1-radio" checked />
+  <input type= "radio" name="slider" id= "slide-2-radio" />
+  <input type= "radio" name="slider" id= "slide-3-radio" />
+  <!-- End Slider Checked -->
 
-    <div class="carousel__container--message">
-
-      <label class="carousel__container--message--card" for="item-1" id="song-1">
-        <div class="carousel__container--message--card--division">
-          <img  src="../../../assets/images/118.png" alt="">
-        </div>
-        <div class="carousel__container--message--card--content">
-          <span>JOHN -</span>
+  <!-- Start Slides -->
+  <div class= "slides">
+    <div  class= "slide">
+      <div class="image">
+        <img class="img" src="../../../assets/images/118.png" alt="">
+      </div>
+      <!-- <p></p>  -->
+      <div class="content">
+        <span [ngStyle]="{'padding-left':'70px'}">JOHN -</span>
           <span>Analyst</span>
           <p [ngStyle]="{'font-size':'20px','padding':'3em 0em','text-align':'start'}">" Not giving employees enough space between desks or
              trying to cram too many people into too small of
               a space will create instant friction. "</p>
-        </div>
-      </label>
-
-      <label class="carousel__container--message--card" for="item-2" id="song-2">
-        <div class="carousel__container--message--card--division">
-          <img src="../../../assets/images/121.png" alt="">
-        </div>
-        <div class="carousel__container--message--card--content">
-          <span>ADAM -</span>
-          <span>Developer</span>
-          <p [ngStyle]="{'font-size':'20px', 'padding':'3em 0em', 'text-align':'start'}">" Space overlap is a huge problem for companies
-            with shared facilities. Trying to use a conference
-            room that’s already occupied disrupts work for both parties. "</p>
-        </div>
-      </label>
-
-      <label class="carousel__container--message--card" for="item-3" id="song-3">
-        <div class="carousel__container--message--card--division">
-          <img src="../../../assets/images/128.png" alt="">
-        </div>
-        <div class="carousel__container--message--card--content">
-          <span>HAZEL -</span>
-          <span>Developer</span>
-          <p [ngStyle]="{'font-size':'20px', 'padding':'3em 0em','text-align':'start'}">" Privacy areas, such as phone booths, are a great solution.
-             Quiet workspaces, private meeting rooms, and discrete hot desks are
-              all great options for those days when total focus is required and
-               interruptions can't be tolerated."</p>
-        </div>
-      </label>
-
+      </div>
+      <!-- <a href= "#"><img src= "http://res.cloudinary.com/hurricane10/image/upload/v1499938951/banner-2_gl3fir.jpg" alt="slide-1" /></a> -->
     </div>
-    <!-- <div [ngStyle]="{'background-color':'blue','display':'flex','justify-content':'space-between','align-items':'center'}">
-      <div> <button (click)="prev()"> <mat-icon>keyboard_arrow_left</mat-icon> </button></div>
-      <div> <button (click)="next()"> <mat-icon>keyboard_arrow_right</mat-icon> </button></div>
-    </div> -->
-
-
-    <!-- <ul class="snapper_nextprev">
-      <li class="snapper_nextprev_item">
-        <a href="#prev" class="snapper_nextprev_prev">Prev</a>
-      </li>
-      <li class="snapper_nextprev_item">
-        <a href="#next" class="snapper_nextprev_next">Next</a>
-      </li>
-    </ul> -->
-
-    <div class="prev-arrow arrow">
-      <label [ngStyle]="{'color':'black'}" for= "item-1" id= "prev-1-arrow">
-        <i class= "fa fa-arrow-left"></i>
-      </label>
-      <label for= "item-2" id= "prev-2-arrow">
-        <i class= "fa fa-arrow-left"></i>
-      </label>
-      <label for= "item-3" id= "prev-3-arrow">
-        <i class= "fa fa-arrow-left"></i>
-      </label>
+    <div  class= "slide">
+      <div class="image">
+        <img class="img" src="../../../assets/images/121.png" alt="">
+      </div>
+      <div class="content">
+      <span [ngStyle]="{'padding-left':'70px'}">ADAM -</span>
+      <span>Developer</span>
+      <p [ngStyle]="{'font-size':'20px', 'padding':'3em 0em', 'text-align':'start'}">" Space overlap is a huge problem for companies
+        with shared facilities. Trying to use a conference
+        room that’s already occupied disrupts work for both parties. "</p>  
+      </div>    
     </div>
-    <!-- Start Prevese Arrow -->
-  
-    <!-- Start next Arrow -->
-    <div class="next-arrow arrow">
-      <label [ngStyle]="{'color':'black'}" for= "item-1" id= "next-1-arrow">
-        <i class= "fa fa-arrow-right"></i>
-      </label>
-      <label for= "item-2" id= "next-2-arrow">
-        <i class= "fa fa-arrow-right"></i>
-      </label>
-      <label for= "item-3" id= "next-3-arrow">
-        <i class= "fa fa-arrow-right"></i>
-      </label>
+    <div  class= "slide">
+      <div class="image">
+        <img class="img"  src="../../../assets/images/128.png" alt="">
+      </div>
+      <div class="content">
+      <span [ngStyle]="{'padding-left':'70px'}">HAZEL -</span>
+      <span>Developer</span>
+      <p [ngStyle]="{'font-size':'20px', 'padding':'3em 0em','text-align':'start'}">" Privacy areas, such as phone booths, are a great solution.
+         Quiet workspaces, private meeting rooms, and discrete hot desks are
+          all great options for those days when total focus is required and
+           interruptions can't be tolerated."</p>
+      </div>
     </div>
-    
   </div>
   
-</div> 
-
-
-
-
-
-
+  <div class="prev-arrow arrow">
+    <label for= "slide-1-radio" id= "prev-1-arrow">
+      <i class= "fa fa-arrow-left"></i>
+    </label>
+    <label for= "slide-2-radio" id= "prev-2-arrow">
+      <i class= "fa fa-arrow-left"></i>
+    </label>
+    <label for= "slide-3-radio" id= "prev-3-arrow">
+      <i class= "fa fa-arrow-left"></i>
+    </label>
+  </div>
   
+  <div class="next-arrow arrow">
+    <label for= "slide-1-radio" id= "next-1-arrow">
+      <i class= "fa fa-arrow-right"></i>
+    </label>
+    <label for= "slide-2-radio" id= "next-2-arrow">
+      <i class= "fa fa-arrow-right"></i>
+    </label>
+    <label for= "slide-3-radio" id= "next-3-arrow">
+      <i class= "fa fa-arrow-right"></i>
+    </label>
+  </div>
+</section>
 

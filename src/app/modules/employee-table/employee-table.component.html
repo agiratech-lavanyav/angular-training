@@ -3,14 +3,7 @@
       <mat-icon [ngStyle]="{'font-size':'2em','color': '#fff'}">keyboard_arrow_left</mat-icon>
   </button>
   <div [ngStyle]="{'float':'right'}">
-
     <mat-slide-toggle [ngStyle]="{'padding':'1.5em 2em'}" [(ngModel)]="isTableEdit"></mat-slide-toggle>
-    <!-- <div *ngIf="!isTableEdit">
-      <button mat-raised-button (click)="editOn()">Edit</button>
-    </div>
-    <div *ngIf="isTableEdit">
-      <button mat-raised-button (click)="saveOn()">Save</button>
-    </div> -->
   </div>
 </div>
 <div class="employee-details">
@@ -21,33 +14,24 @@
         <!-- checkbox -->
 
       <ng-container matColumnDef="select">
-          <th  mat-header-cell *matHeaderCellDef>
+          <!-- <th [(ngModel)]="isChecked"  mat-header-cell *matHeaderCellDef> -->
+          <th mat-header-cell *matHeaderCellDef>
             <mat-checkbox
-                      (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()"> 
+                      (change)="masterToggle()"
+                      [checked]="isChecked"
+                      > 
             </mat-checkbox>
           </th>
-          <td  mat-cell *matCellDef="let row">
-            <mat-checkbox 
-                      (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)">
-            </mat-checkbox>
-          </td>
+          <div>
+            <td mat-cell *matCellDef="let row" >
+              <mat-checkbox *ngIf=isChecked 
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+          </div>
       </ng-container>
-        
-  
-      <!-- Position Column -->
-      <!-- <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          No. 
-        </th>
-        <td mat-cell *matCellDef="let element">
-           {{element.position}} 
-        </td>
-      </ng-container> -->
-
       <!-- Emp Id column -->
       <ng-container matColumnDef="empID">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
@@ -78,6 +62,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
           Gender
         </th>
+
         <td mat-cell *matCellDef="let element">
           <div *ngIf="this.isTableEdit">
               <select [(ngModel)]="element.gender">
@@ -178,12 +163,6 @@
         </th>
       </ng-container>
       
-      <!-- <ng-container matColumnDef="position-row2">
-        <th mat-header-cell *matHeaderCellDef>
-          
-        </th>
-      </ng-container> -->
-
       <ng-container matColumnDef="empID-row2">
         <th mat-header-cell *matHeaderCellDef>    
             <div>
@@ -259,7 +238,7 @@
 
 
       <tr class="employee-details__table--firstTableHeader" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr class="employee-details__table--secondTableHeader" mat-header-row *matHeaderRowDef="['select-section', 'empID-row2','name-row2','gender-row2','age-row2','department-row2','yr_of_joining-row2','email-row2','contact-row2']"></tr>
+      <tr class="employee-details__table--secondTableHeader" mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
 
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
