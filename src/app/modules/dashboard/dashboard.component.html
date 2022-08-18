@@ -1,29 +1,7 @@
+<h2 [ngStyle]="{'color':'#2C3E50', 'font-size': '40px'}">Welcome!!</h2>
 
-<mat-toolbar class="toolbar" >
-  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">   
-    <mat-icon>menu</mat-icon>
-  </button>
- <span>My Dashboard</span>
- <span class="example-spacer"></span>
-</mat-toolbar>
-<mat-drawer-container class="example-container" autosize>
-
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-      <mat-list class="listitems"role="list">
-          <mat-list-item role="listitem"> <mat-icon>account_circle</mat-icon><span class="span"> Profile</span> </mat-list-item>
-          <mat-list-item role="listitem">	<mat-icon>assignment</mat-icon><span class="span">Timesheet</span></mat-list-item>
-          <mat-list-item role="listitem">	<mat-icon>announcement</mat-icon><span class="span">notices</span> </mat-list-item>
-          <mat-list-item role="listitem">	<mat-icon>work_off</mat-icon><span class="span">Leave</span></mat-list-item>
-          <mat-list-item role="listitem" routerLink="/line-chart" ><mat-icon>calendar_today</mat-icon><span class="span">Attendance</span></mat-list-item>
-          <mat-list-item role="listitem" routerLink="/employee-table" ><mat-icon>person</mat-icon><span class="span">Employee details</span></mat-list-item>
-          <mat-list-item role="listitem">	<mat-icon>delete</mat-icon><span class="span" (click)="logout()">Logout</span></mat-list-item>
-
-        </mat-list>   
-  </mat-drawer>
-  <div>
-    <mat-card class="main-content">
-      <h2 [ngStyle]="{'color':'#2C3E50', 'font-size': '40px'}">Welcome!!</h2>
       <mat-card-content >
+
 
           <div class="div-section"  fxFlex="100%"  fxLayout="row wrap" >
               <div class="employee-status" fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
@@ -146,9 +124,6 @@
 
       </div>
      
-    </mat-card>
       
-  </div>
   
 
-</mat-drawer-container>

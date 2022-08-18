@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { MatSort,Sort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -9,26 +9,62 @@ import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { ProfileService } from 'src/app/profile.service';
 import { Output, EventEmitter} from '@angular/core';
-
-
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ActivatedRoute, Router } from '@angular/router';
+import { indexOf } from 'lodash';
 
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrls: ['./employee-table.component.scss']
+  styleUrls: ['./employee-table.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
 export class EmployeeTableComponent {
+  dataItem:any;
   storedData:any;
   isChecked:boolean=false;
+  editableRows: number[]=[];
 
+  @ViewChild('outerSort', { static: true })
+  sort: MatSort = new MatSort;
+  @ViewChildren('innerSort')
+  innerSort!: QueryList<MatSort>;
+  @ViewChildren('innerTables')
+  innerTables!: QueryList<MatTable<Address>>;
 
+  dataSource!: MatTableDataSource<employeeDetails>;
+
+  usersData: employeeDetails[] = [];
   displayedColumns = ['select','empID','name','gender','dob','department','yr_of_joining','email','contact'];
   displayedColumns2 = ['select-section', 'empID-row2','name-row2','gender-row2','age-row2','department-row2','yr_of_joining-row2','email-row2','contact-row2'];
+  innerDisplayedColumns = ['street', 'zipCode', 'city'];
+  expandedElement!: employeeDetails | null ;
+  empID: any;
+  detail: any;
+  data1: any;
+  
+  // empInd: employeeDetails[];
 
-  constructor(private employeeService: ProfileService){
+
+ 
+
+  constructor(private employeeService: ProfileService, private routes: Router,  private activeRoute: ActivatedRoute ,private cd: ChangeDetectorRef){
     // localStorage.setItem('item',JSON.stringify(this.employeeService.ELEMENT_DATA));
+  }
+  editRow(id:number){
+    
+    if(this.editableRows.indexOf(id) != -1) {
+      this.editableRows.splice(this.editableRows.indexOf(id), 1);
+    } else {
+      this.editableRows.push(id);
+    }
   }
 
   empTabDataSource = new MatTableDataSource<employeeDetails>(JSON.parse(localStorage.getItem('item')!));
@@ -65,19 +101,9 @@ export class EmployeeTableComponent {
   empGender = new FormControl();
   empDepartment = new FormControl();
 
-  options = [
-    'Male',
-    'Female',
-  ];
-  values = [
-    'Analyst',
-    'Developer',
-    'Development',
-    'Engineer',
-    'Manager',
-    'Management',
-    'Tester',
-  ];
+  options = ['Male','Female',];
+  values = ['Analyst','Developer','Development','Engineer','Manager','Management','Tester',];
+  // expandedRows: number[] = [102];
 
   filteredOptions: Observable<string[]> | undefined;
   filterOptions: Observable<string[]> | undefined;
@@ -125,8 +151,31 @@ export class EmployeeTableComponent {
         map((val: string) => this.filterDepartment(val))
       );
 
-    }
+      this.dataItem = JSON.parse(localStorage.getItem('item')!);
 
+      this.dataItem.forEach((user: employeeDetails) => {
+        if (user.addresses && Array.isArray(user.addresses) && user.addresses.length) {
+          this.usersData = [...this.usersData, {...user, addresses: new MatTableDataSource(user.addresses)}];
+        } else {
+          this.usersData = [...this.usersData, user];
+        }
+      });
+      this.dataItem = new MatTableDataSource(this.usersData);
+      this.dataItem.sort = this.sort;
+
+      
+      // this.applyFilter(filterValue:string) {
+      //   this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Address>).filter = filterValue.trim().toLowerCase());
+      // }
+
+    }
+    
+    toggleRow(element:employeeDetails) {
+      this.expandedElement = this.expandedElement === element ? null : element;
+      
+      this.cd.detectChanges();
+      this.innerTables.forEach((table, indexOf) => (table.dataSource as MatTableDataSource<Address>).sort= this.innerSort.toArray()[indexOf]);
+    }
     filterGender(val: string): string[] {                                 //for gender (autocomplete)
       return this.options.filter(option =>
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
@@ -148,7 +197,6 @@ export class EmployeeTableComponent {
       let searchString = JSON.parse(filter);
         return data.empID.toString().trim().indexOf(searchString.empID) !== -1 &&
           data.name.toString().trim().toLowerCase().indexOf(searchString.name.toLowerCase()) !== -1 &&
-          // data.gender.toString().trim().toLowerCase().indexOf(searchString.gender.toLowerCase()) !== -1 &&
           data.department.toString().trim().toLowerCase().indexOf(searchString.department.toLowerCase()) !== -1;
       }
       return myFilterPredicate;
@@ -176,18 +224,30 @@ ngAfterViewInit() {
 //   this.storedData = JSON.parse(localStorage.getItem('item')!); 
 //   console.log(this.storedData);
 // }
-editOn(){
-  this.isTableEdit = true;
-  //e.isEdit = true;
-}
-saveOn(){
+// editOn(){
+//   this.isTableEdit = true;
+//   this.editableRows = [];
+//   console.log(this.editableRows);
+//   //e.isEdit = true;
+// }
+// saveOn(){
+//   console.log("comes here");
+//   this.storedData = this.empTabDataSource.data;
+//   localStorage.setItem('item',JSON.stringify(this.storedData));
+//   this.isTableEdit = true;
+//   this.isTableEdit= false;
+// }
+
+toggleTableEdit() {
+  this.editableRows = [];
   this.storedData = this.empTabDataSource.data;
   localStorage.setItem('item',JSON.stringify(this.storedData));
-  this.isTableEdit = true;
-  this.isTableEdit= false;
 }
 
-
+logout(){
+  localStorage.clear();
+  this.routes.navigate(['']);
+}
 }
 
 
@@ -210,7 +270,27 @@ export interface employeeDetails {
     contact: number;
     image: any;
     isEdit:boolean;
-}
+    addresses?: Address[] | MatTableDataSource<Address>;
+  }
+  export interface Address{
+    street: string;
+    zipCode: string;
+    city: string;
+  }
+
+
+// export interface UserDataSource {
+  //   name: string;
+  //   email: string;
+  //   phone: string;
+  //   addresses?: MatTableDataSource<Address>;
+  // }
+
+// export interface Address {
+//   street: string;
+//   zipCode: string;
+//   city: string;
+// }
 
 
   
