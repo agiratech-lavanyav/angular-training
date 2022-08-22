@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/profile.service';
+import { MyServiceService } from 'src/app/providers/my-service.service';
 import { AuthguardGuard } from '../../providers/authguard.guard';
 
 @Component({
@@ -11,8 +12,9 @@ import { AuthguardGuard } from '../../providers/authguard.guard';
 })
 
 export class DashboardComponent{
-  isLogged : boolean = false;
-  constructor(private routes: Router, private profileService: ProfileService, private cd: ChangeDetectorRef){
+  isLogged : boolean = true;
+  constructor(private routes: Router, private profileService: ProfileService, private cd: ChangeDetectorRef,  private myService: MyServiceService){
+    //this.isLogged = myService.isAuthenticate;
   }
 
 
@@ -27,12 +29,6 @@ export class DashboardComponent{
     }
     this.profileService.setEmployeeData(); 
   }
-  
-  logout(){
-    localStorage.clear();
-    this.routes.navigate(['']);
-  }
-
   valueEmittedFromChildComponent: string = '';
   parentEventHandlerFunction(valueEmitted: string){
     this.valueEmittedFromChildComponent = valueEmitted;

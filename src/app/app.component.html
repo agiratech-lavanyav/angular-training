@@ -1,5 +1,5 @@
 <div class="mainpage">
-    <mat-toolbar class="toolbar" *ngIf="isLogged"  >
+    <mat-toolbar class="toolbar" *ngIf="myService.isAuthenticate"  >
     <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">   
       <mat-icon>menu</mat-icon>
     </button>
@@ -9,7 +9,7 @@
   <mat-drawer-container class="example-container" autosize>
   
     <mat-drawer #drawer class="example-sidenav" mode="side">
-        <mat-list class="listitems"role="list" *ngIf="isLogged" >
+        <mat-list class="listitems"role="list" *ngIf="myService.isAuthenticate" >
             <mat-list-item role="listitem"> <mat-icon>account_circle</mat-icon><span class="span"> Profile</span> </mat-list-item>
             <mat-list-item role="listitem">	<mat-icon>assignment</mat-icon><span class="span">Timesheet</span></mat-list-item>
             <mat-list-item role="listitem">	<mat-icon>announcement</mat-icon><span class="span">notices</span> </mat-list-item>
@@ -22,22 +22,10 @@
     <div>
       <mat-card class="main-content">
         <mat-card-content >
-          <!-- <span> {{ valueEmittedFromChildComponent }}</span> -->
-          <!-- <app-dashboard (buttonClicked)="parentEventHandlerFunction($event)"></app-dashboard> -->
-          
             <router-outlet></router-outlet>
         </mat-card-content>
-        
-       
-      </mat-card>
-        
+      </mat-card> 
     </div>
-    
-  
   </mat-drawer-container>
 </div>
-  
-  
-<!-- <div class="mainpage" [ngStyle]="{'overflow-y':'hidden'}">
-</div> -->
 

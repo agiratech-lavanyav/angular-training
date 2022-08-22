@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   hide=true;
   isLogged :boolean = false;
 
-  constructor(private fb: FormBuilder, private routes : Router, private myService: MyServiceService){
+  constructor(private fb: FormBuilder, private routes : Router, private myService: MyServiceService){    
   }
 
   ngOnInit(): void {
@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
       this.showSidenav.emit(true)
       localStorage.setItem('userName', JSON.stringify(data));
       this.routes.navigate(['/dashboard']);
-      this.isLogged = true;
     }
   }
 }
