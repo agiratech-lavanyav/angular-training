@@ -12,7 +12,6 @@ export class DateOfBirthPipe implements PipeTransform {
     console.log(new Date());
     let age: any;
     age = currentDate - birthDate;
-    console.log(age);
     return age;
   }
 }

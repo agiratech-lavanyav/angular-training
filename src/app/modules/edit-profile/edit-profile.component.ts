@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, Routes } from '@angular/router';
 import { DetailsComponent } from '../details/details.component';
+import { EmployeeTableRoutingModule } from '../employee-table/employee-table-routing.module';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,34 +13,60 @@ import { DetailsComponent } from '../details/details.component';
 export class EditProfileComponent implements OnInit {
   empUpdate: any;
   empList: any;
+  updateValue: any;
+  employeeUpdate: any;
 
  
-  constructor(public dialogRef: MatDialogRef<EditProfileComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private route:Router) { }
+  constructor(public dialogRef: MatDialogRef<EditProfileComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private route:Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
   }
-  details = new FormGroup({
-    'name': new FormControl(this.data[0].name,Validators.required),
-    'gender': new FormControl(this.data[0].gender,Validators.required),
-    'yr_of_exp': new FormControl(this.data[0].yr_of_exp,Validators.required),
-    'dob': new FormControl(new Date(this.data[0].dob),Validators.required),
-    'department': new FormControl(this.data[0].department,Validators.required),
-    'email': new FormControl(this.data[0].email,Validators.required),
-    'contact': new FormControl(this.data[0].contact,Validators.required)
+
+  details = this.formBuilder.group({
+    name: [(this.data[0].name),[Validators.required]],
+    gender:[(this.data[0].gender),[Validators.required]],
+    yr_of_exp: [(this.data[0].yr_of_exp),[Validators.required]],
+    dob: [(new Date(this.data[0].dob)),[Validators.required]],
+    department: [(this.data[0].department),[Validators.required]],
+    email: [(this.data[0].email),[Validators.required]],
+    contact: [(this.data[0].contact),[Validators.required]],
   });
 
   saveDetail(){
     this.empUpdate = JSON.parse(localStorage.getItem('item')!);
+
     this.empList = this.empUpdate.findIndex((element:any) => {return element.empID == this.data[0].empID});
-    this.empUpdate[this.empList].name = this.details.controls['name'].value;
-    this.empUpdate[this.empList].gender = this.details.controls['gender'].value;
-    this.empUpdate[this.empList].yr_of_exp = this.details.controls['yr_of_exp'].value;
-    this.empUpdate[this.empList].dob = this.details.controls['dob'].value;
-    this.empUpdate[this.empList].department = this.details.controls['department'].value;
-    this.empUpdate[this.empList].email = this.details.controls['email'].value;
-    this.empUpdate[this.empList].contact = this.details.controls['contact'].value;
+
+    // var index: any = this.empUpdate.indexOf(this.empList);
+
+    // console.log("Index is",index);
+
+    var updateValue: any = {
+      position : this.empUpdate[this.empList].position,
+      empID : this.empUpdate[this.empList].empID,
+      name : this.details.controls['name'].value,
+      gender : this.details.controls['gender'].value,
+      dob : this.details.controls['dob'].value,
+      department : this.details.controls['department'].value,
+      yr_of_joining : this.empUpdate[this.empList].yr_of_joining,
+      email : this.details.controls['email'].value,
+      yr_of_exp : this.details.controls['yr_of_exp'].value,
+      contact : this.details.controls['contact'].value,
+      image : this.empUpdate[this.empList].image,
+      isEdit : this.empUpdate[this.empList].isEdit,
+    };
+
+    this.empUpdate[this.empList] = updateValue;
     localStorage.setItem('item',JSON.stringify(this.empUpdate));
-    this.route.navigate(['/employee-table']);
+    this.empUpdate = JSON.parse(localStorage.getItem('item')!);
+
     this.dialogRef.close();
+
+    // isUpdate: true; 
+    // window.location.reload();
+
+    // this.route.navigate(['/details/',this.empList.empID]);
   }
+  
 }

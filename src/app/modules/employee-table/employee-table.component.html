@@ -2,46 +2,43 @@
   <button routerLink="/dashboard">
       <mat-icon [ngStyle]="{'font-size':'2em','color': '#fff'}">keyboard_arrow_left</mat-icon>
   </button>
+  <div [ngStyle]="{'float':'right'}">
+    <mat-slide-toggle [ngStyle]="{'padding':'1.5em 2em'}" [(ngModel)]="isTableEdit"></mat-slide-toggle>
+  </div>
 </div>
 <div class="employee-details">
-  
+
   <table class="employee-details__table" mat-table [dataSource]="empTabDataSource" matSort #employeeTableSort="matSort">
 
       <!-- first row -->
         <!-- checkbox -->
 
       <ng-container matColumnDef="select">
-          <th  mat-header-cell *matHeaderCellDef>
-            <mat-checkbox 
-                      (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()"> 
+          <!-- <th [(ngModel)]="isChecked"  mat-header-cell *matHeaderCellDef> -->
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+                      (change)="masterToggle()"
+                      [checked]="isChecked"
+                      > 
             </mat-checkbox>
           </th>
-          <td  mat-cell *matCellDef="let row">
-            <mat-checkbox 
-                      (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)">
-            </mat-checkbox>
-          </td>
+          <div>
+            <td mat-cell *matCellDef="let row" >
+              <mat-checkbox *ngIf=isChecked 
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+          </div>
       </ng-container>
-        
-  
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          No. 
-        </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-
       <!-- Emp Id column -->
       <ng-container matColumnDef="empID">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
            Employee ID 
         </th>
-        <td mat-cell *matCellDef="let element"><a [routerLink]="['/details', element.empID ]"> {{element.empID}} </a></td>
+        <td mat-cell *matCellDef="let element">
+          {{element.empID}} </td>
       </ng-container>
   
       <!-- Name Column -->
@@ -49,27 +46,49 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Name 
         </th>
-        <td ><mat-form-field class="demo">
-          <input type="text" matInput placeholder="Search">
-        </mat-form-field></td>
-        <td  mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <td mat-cell *matCellDef="let element"><a [routerLink]="['/details', element.empID ]" [ngStyle]="{'text-decoration':'none'}">
+          <div *ngIf="this.isTableEdit">
+            <input mat-input [(ngModel)]="element.name">
+          </div>
+          <div *ngIf="!this.isTableEdit">
+            {{element.name}}
+          </div></a>
+        </td>
       </ng-container>
 
       <!-- Gender Column -->
       <ng-container matColumnDef="gender">
 
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
-          Gender 
+          Gender
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="this.isTableEdit">
+              <select [(ngModel)]="element.gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+          </div>
+          <div *ngIf="!this.isTableEdit">
+            {{element.gender}}
+          </div>
+          </td>
       </ng-container>
 
       <!-- dob Column -->
       <ng-container matColumnDef="dob">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Date Of Birth
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+          <mat-icon [ngStyle]="{'padding-right':'4px'}">date_range</mat-icon> Date Of Birth 
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.dob | date: "dd/MM/YYYY"}} </td>
+        <td mat-cell *matCellDef="let element"> 
+          <div *ngIf="this.isTableEdit">
+            <input mat-input [(ngModel)]="element.dob">
+          </div>
+          <div  *ngIf="!this.isTableEdit">
+            {{element.dob | date: "dd/MM/YYYY"}} 
+          </div>
+        </td>
       </ng-container>
   
       <!-- Department Column -->
@@ -77,31 +96,59 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Department 
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="this.isTableEdit">
+            <input mat-input [(ngModel)]="element.department">
+          </div>
+          <div *ngIf="!this.isTableEdit">
+            {{element.department}} 
+          </div>
+        </td>
       </ng-container>
 
       <!-- Year of joining Column -->
       <ng-container matColumnDef="yr_of_joining">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
-         Year Of Joining
+         Year Of Joining 
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.yr_of_joining}} </td>
+        <td mat-cell *matCellDef="let element"> 
+          <div *ngIf="this.isTableEdit">
+            <input mat-input [(ngModel)]="element.yr_of_joining">
+          </div>
+          <div *ngIf="!this.isTableEdit">
+            {{element.yr_of_joining}} 
+          </div>
+        </td>
       </ng-container>
 
        <!-- Email Column -->
        <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Email
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+          <mat-icon [ngStyle]="{'padding-right':'10px'}">email</mat-icon> Email 
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="this.isTableEdit">
+            <input mat-input [(ngModel)]="element.email">
+          </div>
+          <div *ngIf="!this.isTableEdit">
+            {{element.email}} 
+          </div>
+        </td>
       </ng-container>
 
       <!-- Contact Number Column -->
       <ng-container matColumnDef="contact">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        Contact
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 
+          <mat-icon [ngStyle]="{'padding-right':'10px'}">phone</mat-icon> Contact 
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+        <td mat-cell *matCellDef="let element"> 
+          <div *ngIf="this.isTableEdit">
+            <input mat-input [(ngModel)]="element.contact">
+          </div>
+          <div *ngIf="!this.isTableEdit">
+            {{element.contact}} 
+          </div>
+        </td>
       </ng-container>
 
 
@@ -116,28 +163,24 @@
         </th>
       </ng-container>
       
-      <ng-container matColumnDef="position-row2">
-        <th mat-header-cell *matHeaderCellDef>
-          
-        </th>
-      </ng-container>
-
       <ng-container matColumnDef="empID-row2">
         <th mat-header-cell *matHeaderCellDef>    
             <div>
-              <mat-form-field>
-                <input matInput (ngModelChange)="applyFilter($event)" class="form-field" [formControl]="idFilter" placeholder="ID Filter">
+              <mat-form-field appearance="outline">
+                <input  matInput (ngModelChange)="applyFilter($event)" class="form-field" [formControl]="idFilter" placeholder="     ID Filter">
               </mat-form-field>
+              <mat-icon [ngStyle]="{'color':'#fff'}">search</mat-icon>
             </div>    
         </th>
       </ng-container>
 
       <ng-container matColumnDef="name-row2">
-        <th mat-header-cell *matHeaderCellDef>          
+        <th mat-header-cell *matHeaderCellDef >          
           <div>
-            <mat-form-field>
-              <input matInput  class="form-field" [formControl]="nameFilter" placeholder="Name Filter">
+            <mat-form-field appearance="outline">
+              <input [ngStyle]="{'margin-left':'20px'}" matInput  class="form-field" [formControl]="nameFilter" placeholder="Name Filter" >
             </mat-form-field>
+            <mat-icon [ngStyle]="{'color':'#fff'}">search</mat-icon>
           </div> 
         </th>
       </ng-container>
@@ -195,7 +238,7 @@
 
 
       <tr class="employee-details__table--firstTableHeader" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr class="employee-details__table--secondTableHeader" mat-header-row *matHeaderRowDef="['select-section','position-row2', 'empID-row2','name-row2','gender-row2','age-row2','department-row2','yr_of_joining-row2','email-row2','contact-row2']"></tr>
+      <tr class="employee-details__table--secondTableHeader" mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
 
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

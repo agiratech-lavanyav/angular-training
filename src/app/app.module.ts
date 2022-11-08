@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthguardGuard } from './providers/authguard.guard';
 import {CdkTableModule} from '@angular/cdk/table';
 
+
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
+// import { CarouselComponent } from './modules/carousel/carousel.component';
 //import { ToolbarComponent } from './modules/toolbar/toolbar.component';
 
 
@@ -17,6 +19,7 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
   declarations: [
     AppComponent,
     LineChartComponent,
+    // CarouselComponent,
     //ToolbarComponent,
   ],
   imports: [

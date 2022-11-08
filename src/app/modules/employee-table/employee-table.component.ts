@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { ProfileService } from 'src/app/profile.service';
+import { Output, EventEmitter} from '@angular/core';
+
+
 
 
 @Component({
@@ -17,7 +20,12 @@ import { ProfileService } from 'src/app/profile.service';
 })
 
 export class EmployeeTableComponent {
-  displayedColumns = ['select','position', 'empID','name','gender','dob','department','yr_of_joining','email','contact'];
+  storedData:any;
+  isChecked:boolean=false;
+
+
+  displayedColumns = ['select','empID','name','gender','dob','department','yr_of_joining','email','contact'];
+  displayedColumns2 = ['select-section', 'empID-row2','name-row2','gender-row2','age-row2','department-row2','yr_of_joining-row2','email-row2','contact-row2'];
 
   constructor(private employeeService: ProfileService){
     // localStorage.setItem('item',JSON.stringify(this.employeeService.ELEMENT_DATA));
@@ -25,7 +33,7 @@ export class EmployeeTableComponent {
 
   empTabDataSource = new MatTableDataSource<employeeDetails>(JSON.parse(localStorage.getItem('item')!));
   selection = new SelectionModel<employeeDetails>(true, []);
-
+  isTableEdit = false;
 
 
   isAllSelected() {
@@ -34,11 +42,24 @@ export class EmployeeTableComponent {
     return numSelected === numRows;
   }
   masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.empTabDataSource.data.forEach(row => this.selection.select(row));
+    // this.isAllSelected() ?
+    //     this.selection.clear() :
+    //     this.empTabDataSource.data.forEach(row => this.selection.select(row));
+    if(this.isChecked) {
+      this.isChecked = false;
+      this.displayedColumns[1] = 'empID';
+      this.displayedColumns[2] = 'name';
+      this.displayedColumns2[1] = 'empID-row2';
+      this.displayedColumns2[2] = 'name-row2';
+    } else {
+      this.isChecked = true;
+      this.displayedColumns[1] = 'name';
+      this.displayedColumns[2] = 'empID';
+      this.displayedColumns2[1] = 'name-row2';
+      this.displayedColumns2[2] = 'empID-row2';
+    }
   }
-
+  
   // Autocomplete for gender section
 
   empGender = new FormControl();
@@ -151,7 +172,25 @@ ngAfterViewInit() {
   this.empTabDataSource.sort = this.employeeTableSort;
 
 }
+// getData(){
+//   this.storedData = JSON.parse(localStorage.getItem('item')!); 
+//   console.log(this.storedData);
+// }
+editOn(){
+  this.isTableEdit = true;
+  //e.isEdit = true;
 }
+saveOn(){
+  this.storedData = this.empTabDataSource.data;
+  localStorage.setItem('item',JSON.stringify(this.storedData));
+  this.isTableEdit = true;
+  this.isTableEdit= false;
+}
+
+
+}
+
+
 
   // constructor() { }
 
@@ -170,7 +209,9 @@ export interface employeeDetails {
     email: any;
     contact: number;
     image: any;
+    isEdit:boolean;
 }
+
 
   
   
@@ -179,7 +220,7 @@ export interface employeeDetails {
 
 
 
-function item(item: any): string {
-  throw new Error('Function not implemented.');
-}
+// function item(item: any): string {
+//   throw new Error('Function not implemented.');
+// }
 

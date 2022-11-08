@@ -1,4 +1,8 @@
-::ng-deep app-dashboard{  
+body{
+  overflow-y: hidden !important;
+}
+::ng-deep app-dashboard{ 
+   
   mat-drawer-container{
     height: 100vh;
     color: black;
@@ -42,12 +46,12 @@
     .performance{
       padding: 4em;
       margin-right: 10px;
-      border-radius: 20px;
+      // border-radius: 20px;
       border: 1px solid #2C3E50 ;
     }
     .learning{
       padding: 4em;
-      border-radius: 20px;
+      // border-radius: 20px;
       border: 1px solid #2C3E50 ;
     }
   }
@@ -178,7 +182,7 @@
           height: 200px;
           padding: 2em;
           border: 1px solid #2C3E50 ;
-          border-radius: 20px;
+          // border-radius: 20px;
           h2{
             font-weight: bold;
           }
@@ -191,7 +195,7 @@
         .review{
           height: 200px;
           padding: 2em;
-          border-radius: 20px;
+          // border-radius: 20px;
           border: 1px solid #2C3E50 ;
           img{
             height: 150px;
@@ -207,7 +211,7 @@
         .skills{
           height: 200px;
           padding: 2em;
-          border-radius: 20px;
+          // border-radius: 20px;
           border: 1px solid #2C3E50 ;
           h2{
             font-weight: bold;
@@ -221,7 +225,7 @@
         .acheivements{
           height: 200px;
           padding: 2em;
-          border-radius: 20px;
+          // border-radius: 20px;
           border: 1px solid #2C3E50 ;
           img{
             width: 150px;
@@ -239,7 +243,7 @@
         .upcoming-holidays{
           height: 200px;
           padding: 2em;
-          border-radius: 20px;
+          // border-radius: 20px;
           border: 1px solid #2C3E50 ;
           h2{
             font-weight: bold;
