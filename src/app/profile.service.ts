@@ -52,4 +52,7 @@ export class ProfileService {
   getDetails(employeeId: any){
     return this.ELEMENT_DATA.find((element:any) => element.empID == employeeId)
   }
+  setEmployeeData(){
+    localStorage.setItem('item', JSON.stringify(this.ELEMENT_DATA));
+  }
 }

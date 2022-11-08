@@ -67,7 +67,6 @@
                 padding: 4em 0em;
                 border: 2px solid;
                 border-radius: 20px;
-                // display: block;
                 overflow: scroll;
 
                 tr,td{
@@ -76,7 +75,59 @@
             }
         }
     }
+    @media screen and (max-width: 800px){
+        .home{
+         
+            .title{
+                padding-left: 0px !important;
+                font-size: 25px !important;
+            }
+            
+        }
+        .profile{
+            flex-direction: column;
+            margin: 1em;
 
-    
+            &__background{
+                width: 100%;
+                &--blob {
+                    &--image{
+                        width: 200px;
+                        height: 285px;
+                        left: 20%;
+                        top: 6%;
+                    }
+                    &--namefield{
+                        padding:0.5em;
+                        font-size: 16px;
+                        bottom: 11%;
+                        left: 38%;
+                    }
+
+                }
+
+            }
+            &__info{
+                width: 100%;
+                &--title{
+                    justify-content: space-between;
+
+                    header{
+                        font-size: 1.5em;
+                        padding-left: 0px;
+                    }
+                }
+                table{
+                    padding: 0.5em 0em;
+                    tr,td{
+                        padding: 0.5em;
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+       
+    }
 
 }
+

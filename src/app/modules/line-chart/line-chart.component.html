@@ -5,7 +5,7 @@
         <!-- <mat-icon style="font-size:2em;color: #fff;">keyboard_arrow_left</mat-icon> -->
     </button>
   </div>
-  <div class="div" style="display: block">
+  <div class="div" [ngStyle]="{'display': 'block'}">
     <canvas baseChart
             [datasets]="lineChartData"
             [labels]="lineChartLabels"

@@ -1,0 +1,84 @@
+<div class="editProfile">
+	<h1>EDIT PROFILE</h1>
+	<form [formGroup]="details">
+		<h2 [ngStyle]="{'font-size':'15px'}">PERSONAL DETAILS</h2>
+
+		<div class="editProfile__row1" >
+			<div class="editProfile__row1--name" >
+				<mat-form-field >
+					<mat-label >Fullname</mat-label>
+					<input matInput formControlName="name">
+				</mat-form-field>
+			</div>
+		
+			<div class="editProfile__row1--gender" >
+				<mat-form-field >
+					<mat-label>Choose Gender</mat-label>
+					<mat-select formControlName="gender">
+							<mat-option value="Male">Male</mat-option>
+							<mat-option value="Female">Female</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+
+		<div class="editProfile__row2">
+			<div class="editProfile__row2--experience" >
+				<mat-form-field  >
+					<mat-label >Experience</mat-label>
+					<input matInput formControlName="yr_of_exp">
+				</mat-form-field>
+			</div>
+			<div class="editProfile__row2--department" >
+				<mat-form-field >
+					<mat-label>Choose department</mat-label>
+					<mat-select formControlName="department">
+							<mat-option value="Analyst">Analyst</mat-option>
+							<mat-option value="Developer">Developer</mat-option>
+							<mat-option value="Development">Development</mat-option>
+							<mat-option value="Engineer">Engineer</mat-option>
+							<mat-option value="Manager">Manager</mat-option>
+							<mat-option value="Management">Management</mat-option>
+							<mat-option value="Tester">Tester</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="editProfile__row3" >
+			<mat-form-field>
+				<mat-label>Choose a date</mat-label>
+				<input matInput [matDatepicker]="picker" formControlName="dob">
+				<mat-hint>DD/MM/YYYY</mat-hint>
+				<mat-datepicker-toggle matSuffix [for]="picker">
+					<mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+				</mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+		</div>
+
+		<h2 [ngStyle]="{'padding-top':'20px','font-size':'15px'}">CONTACT DETAILS</h2>
+
+		<div class="editProfile__row4" >
+			<div class="editProfile__row4--email">
+				<mat-form-field >
+					<mat-label>Email</mat-label>
+					<input matInput formControlName="email">
+				</mat-form-field>
+			</div>
+			<div class="editProfile__row4--contact">
+				<mat-form-field >
+					<mat-label>Contact</mat-label>
+					<input matInput formControlName="contact">
+				</mat-form-field>
+			</div>
+		</div>
+	</form>
+	<div mat-dialog-actions class="editProfile__actions">
+		
+		<button mat-raised-button mat-dialog-close color="primary" >Close</button>
+		<button mat-raised-button [ngStyle]="{'background-color':'green'}"   (click)="saveDetail()">Save</button>
+	</div>
+
+
+</div>
+

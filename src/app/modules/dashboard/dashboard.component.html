@@ -1,21 +1,11 @@
 
 <mat-toolbar class="toolbar" >
-  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      
-   <mat-icon>menu</mat-icon>
- </button>
+  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">   
+    <mat-icon>menu</mat-icon>
+  </button>
  <span>My Dashboard</span>
  <span class="example-spacer"></span>
- <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-   <mat-icon>favorite</mat-icon>
- </button> -->
- <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-  <mat-icon>share</mat-icon>
-</button> -->
 </mat-toolbar>
-
-<!-- <app-toolbar></app-toolbar> -->
-
 <mat-drawer-container class="example-container" autosize>
 
   <mat-drawer #drawer class="example-sidenav" mode="side">
@@ -32,18 +22,18 @@
   </mat-drawer>
   <div>
     <mat-card class="main-content">
-      <h2 style="color:#2C3E50; font-size: 40px;">Welcome!!</h2>
+      <h2 [ngStyle]="{'color':'#2C3E50', 'font-size': '40px'}">Welcome!!</h2>
       <mat-card-content >
 
           <div class="div-section"  fxFlex="100%"  fxLayout="row wrap" >
               <div class="employee-status" fxFlex="50%" fxFlex.sm="50%" fxFlex.xs="100%">
                   <div class="performance">
-                      <h3 style="font-size:30px;">Performance Rate</h3>
-                      <img class="light" style="width: 50px;" src="../../assets/images/lightening.png" alt="">
-                      <span style="font-weight: bold; font-size: 30px;">76.89%</span>
+                      <h3 [ngStyle]="{'font-size':'30px'}">Performance Rate</h3>
+                      <img class="light" [ngStyle]="{'width': '50px'}" src="../../assets/images/lightening.png" alt="">
+                      <span [ngStyle]="{'font-weight': 'bold', 'font-size': '30px'}">76.89%</span>
                   </div>    
                   <div class="learning">
-                      <h3 style="font-size:30px;">Intermediate Learner</h3>
+                      <h3 [ngStyle]="{'font-size':'30px'}">Intermediate Learner</h3>
                       <button mat-raised-button color="primary"style="font-weight: bold;">Explore more!!</button>
                   </div>
               </div>
@@ -51,7 +41,7 @@
                   <div class="all">
                       <div class="circle-wrap">
                         <div class="content1">
-                         <h4 style="font-size: 30px;">Weekly performance</h4>
+                         <h4 [ngStyle]="{'font-size': '30px'}">Weekly performance</h4>
                         </div>
                         <div class="circle">
                           <div class="mask full-1">
@@ -65,7 +55,7 @@
                       </div>
                         <div class="circle-wrap">
                           <div class="content2">
-                              <h4 style="font-size: 30px; font-weight: 500;" > Skills Updated</h4>                            
+                              <h4 [ngStyle]="{'font-size': '30px', 'font-weight': '500'}" > Skills Updated</h4>                            
                           </div>
                           <div class="circle">
                             <div class="mask full-2">
@@ -79,7 +69,7 @@
                         </div>
                           <div class="circle-wrap">
                             <div class="content3">
-                              <h4 style="font-size: 30px;  font-weight: 500;">Overall Improvement </h4>
+                              <h4 [ngStyle]="{'font-size': '30px', 'font-weight': '500'}">Overall Improvement </h4>
                             </div>
                             <div class="circle">
                               <div class="mask full-3">

@@ -13,9 +13,10 @@ import { FormControl, ReactiveFormsModule} from '@angular/forms';
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule} from '@angular/material/checkbox';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -37,6 +38,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatCheckboxModule,
     MatOptionModule,
     MatSelectModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports:[
     MatToolbarModule,
@@ -54,6 +58,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatCheckboxModule,
     MatOptionModule,
     MatSelectModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
 
   ]
 })
