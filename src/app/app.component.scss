@@ -1,4 +1,41 @@
 .mainpage{
-    height: 100vh;    
-} 
+    height: 100vh; 
+    overflow-y: hidden !important;
+
+}
+   
+
+mat-drawer-container{
+    height: 100vh;
+    color: black;
+    background-color: #fff;
+  }
+  .main-content{
+    margin: 1rem ;
+    background-color: #fff;
+    }
+  .toolbar {
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50);  
+    background: linear-gradient(to right, #569bc9, #2C3E50); ;
+  }
+  mat-list-item:hover{
+    cursor: pointer;
+    background-color: #2C3E50;
+    // color: black;
+  }
+  .example-sidenav{
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+    background: linear-gradient(to right, #569bc9, #2C3E50); ;
+  }
+  .span{
+    padding: 20px;
+  }
+  .div-section{
+    border-radius: 20px;
+    background: #2C3E50;  
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+    background: linear-gradient(to right, #569bc9, #2C3E50);
+  }
  

@@ -1,18 +1,15 @@
-<div class="home">
-  <button routerLink="/dashboard">
-      <mat-icon [ngStyle]="{'font-size':'2em','color': '#fff'}">keyboard_arrow_left</mat-icon>
-  </button>
-  <div [ngStyle]="{'float':'right'}">
-    <mat-slide-toggle [ngStyle]="{'padding':'1.5em 2em'}" [(ngModel)]="isTableEdit"></mat-slide-toggle>
-  </div>
-</div>
 <div class="employee-details">
-
-  <table class="employee-details__table" mat-table [dataSource]="empTabDataSource" matSort #employeeTableSort="matSort">
+  <div [ngStyle]="{'float':'right'}">
+    <mat-slide-toggle color="primary" [ngStyle]="{'padding':'1.5em 2em'}" (change)="toggleTableEdit()" [(ngModel)]="isTableEdit"></mat-slide-toggle>
+  </div>
+  <table class="employee-details__table" mat-table [dataSource]="empTabDataSource" multiTemplateDataRows  matSort #employeeTableSort="matSort">
 
       <!-- first row -->
-        <!-- checkbox -->
+      <!-- checkbox -->
 
+        
+
+<ng-container>
       <ng-container matColumnDef="select">
           <!-- <th [(ngModel)]="isChecked"  mat-header-cell *matHeaderCellDef> -->
           <th mat-header-cell *matHeaderCellDef>
@@ -24,6 +21,7 @@
           </th>
           <div>
             <td mat-cell *matCellDef="let row" >
+
               <mat-checkbox *ngIf=isChecked 
                 (click)="$event.stopPropagation()"
                 (change)="$event ? selection.toggle(row) : null"
@@ -35,9 +33,11 @@
       <!-- Emp Id column -->
       <ng-container matColumnDef="empID">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
-           Employee ID 
+            Employee ID 
         </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" (click)="editRow(element.empID)">
+          <mat-icon (click)="toggleRow(element)" *ngIf="expandedElement != element" >keyboard_arrow_down</mat-icon>
+          <mat-icon (click)="toggleRow(element)" *ngIf="expandedElement == element" >keyboard_arrow_up</mat-icon>
           {{element.empID}} </td>
       </ng-container>
   
@@ -47,10 +47,10 @@
           Name 
         </th>
         <td mat-cell *matCellDef="let element"><a [routerLink]="['/details', element.empID ]" [ngStyle]="{'text-decoration':'none'}">
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
             <input mat-input [(ngModel)]="element.name">
           </div>
-          <div *ngIf="!this.isTableEdit">
+          <div *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1 ">
             {{element.name}}
           </div></a>
         </td>
@@ -64,13 +64,13 @@
         </th>
 
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
               <select [(ngModel)]="element.gender">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
           </div>
-          <div *ngIf="!this.isTableEdit">
+          <div *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1 ">
             {{element.gender}}
           </div>
           </td>
@@ -82,10 +82,10 @@
           <mat-icon [ngStyle]="{'padding-right':'4px'}">date_range</mat-icon> Date Of Birth 
         </th>
         <td mat-cell *matCellDef="let element"> 
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
             <input mat-input [(ngModel)]="element.dob">
           </div>
-          <div  *ngIf="!this.isTableEdit">
+          <div  *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1 ">
             {{element.dob | date: "dd/MM/YYYY"}} 
           </div>
         </td>
@@ -97,10 +97,10 @@
           Department 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
             <input mat-input [(ngModel)]="element.department">
           </div>
-          <div *ngIf="!this.isTableEdit">
+          <div *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1">
             {{element.department}} 
           </div>
         </td>
@@ -109,28 +109,28 @@
       <!-- Year of joining Column -->
       <ng-container matColumnDef="yr_of_joining">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
-         Year Of Joining 
+          Year Of Joining 
         </th>
         <td mat-cell *matCellDef="let element"> 
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
             <input mat-input [(ngModel)]="element.yr_of_joining">
           </div>
-          <div *ngIf="!this.isTableEdit">
+          <div *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1 ">
             {{element.yr_of_joining}} 
           </div>
         </td>
       </ng-container>
 
-       <!-- Email Column -->
-       <ng-container matColumnDef="email">
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 
           <mat-icon [ngStyle]="{'padding-right':'10px'}">email</mat-icon> Email 
         </th>
         <td mat-cell *matCellDef="let element">
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
             <input mat-input [(ngModel)]="element.email">
           </div>
-          <div *ngIf="!this.isTableEdit">
+          <div *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1 ">
             {{element.email}} 
           </div>
         </td>
@@ -142,10 +142,10 @@
           <mat-icon [ngStyle]="{'padding-right':'10px'}">phone</mat-icon> Contact 
         </th>
         <td mat-cell *matCellDef="let element"> 
-          <div *ngIf="this.isTableEdit">
+          <div *ngIf="this.isTableEdit && editableRows.indexOf(element.empID) != -1">
             <input mat-input [(ngModel)]="element.contact">
           </div>
-          <div *ngIf="!this.isTableEdit">
+          <div *ngIf="!this.isTableEdit || this.isTableEdit && editableRows.indexOf(element.empID) == -1 ">
             {{element.contact}} 
           </div>
         </td>
@@ -210,7 +210,7 @@
 
           <form >
             <mat-form-field>
-              <input  type="text" placeholder="Select Department" matInput [formControl]="empDepartment" [matAutocomplete]="auto">
+              <input type="text" placeholder="Select Department" matInput [formControl]="empDepartment" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let value of filterOptions | async" [value]="value">
                   {{ value }}
@@ -235,12 +235,40 @@
         <th mat-header-cell *matHeaderCellDef>
         </th>
       </ng-container>
+</ng-container>
 
+<ng-container matColumnDef="expandedDetail">
+  <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+    <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+      <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+        <mat-form-field>
+          <input matInput placeholder="Filter">
+        </mat-form-field>
+        <table #innerTables mat-table #innerSort="matSort" [dataSource]="element.addresses" matSort>
+          <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="innerDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+  </td>
+</ng-container>
+    <tr class="employee-details__table--firstTableHeader" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="employee-details__table--secondTableHeader" mat-header-row *matHeaderRowDef="displayedColumns2"></tr> 
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+      [class.example-expanded-row]="expandedElement === element">
+    </tr>
+    <tr mat-row *matRowDef="let element; columns: ['expandedDetail']" 
+    class="example-detail-row">
+    </tr>
+   
+      <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
 
-      <tr class="employee-details__table--firstTableHeader" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr class="employee-details__table--secondTableHeader" mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      
 
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
     <mat-paginator class="employee-details__table-paginator" #paginator
@@ -249,3 +277,9 @@
     </mat-paginator>
 </div>
   
+
+
+  
+
+
+

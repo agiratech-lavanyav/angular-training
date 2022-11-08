@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 // import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyServiceService {
-  constructor() { }
+  constructor( private routes: Router) { }
   isAuthenticate = false;
 
 login(){
@@ -19,6 +20,11 @@ login(){
   this.isAuthenticate = false;
   return this.isAuthenticate;
   }
+}
+logout(){
+  localStorage.clear();
+  this.isAuthenticate = false;
+  this.routes.navigate(['']);
 }
 }
 

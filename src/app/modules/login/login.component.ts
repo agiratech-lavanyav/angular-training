@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule , Router } from '@angular/router';
 import { MyServiceService } from '../../providers/my-service.service';
@@ -8,19 +8,28 @@ import { MyServiceService } from '../../providers/my-service.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [MyServiceService]
+  providers: [MyServiceService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
+
+  @Output()
+  showSidenav: EventEmitter<boolean> = new EventEmitter<boolean>;
+
   hide=true;
-  constructor(private fb: FormBuilder, private routes : Router, private myService: MyServiceService){}
+  isLogged :boolean = false;
+
+  constructor(private fb: FormBuilder, private routes : Router, private myService: MyServiceService){    
+  }
 
   ngOnInit(): void {
+    this.isLogged = true;
     if(localStorage.getItem("userName")!=null){
-      this.routes.navigate(['/dashboard'])
+      this.routes.navigate(['/dashboard']);
     }
     else{
       this.routes.navigate([''])
-    }
+    }    
   }
   loginForm: FormGroup = this.fb.group({
     username: ['', [Validators.required]],
@@ -37,9 +46,9 @@ export class LoginComponent implements OnInit {
         id: (Math.random()),
         isAuthenticated: true,
       };
+      this.showSidenav.emit(true)
       localStorage.setItem('userName', JSON.stringify(data));
       this.routes.navigate(['/dashboard']);
     }
   }
-
-  }
+}

@@ -8,6 +8,10 @@
 				<mat-form-field >
 					<mat-label >Fullname</mat-label>
 					<input matInput formControlName="name">
+					<mat-error>
+						The username and password were not recognised
+					</mat-error>
+					<!-- <mat-error *ngIf="details.controls['name'].invalid && (details.controls['name'].dirty || details.controls['name'].touched)"></mat-error> -->
 				</mat-form-field>
 			</div>
 		
@@ -27,6 +31,9 @@
 				<mat-form-field  >
 					<mat-label >Experience</mat-label>
 					<input matInput formControlName="yr_of_exp">
+					<mat-error>
+						Please enter the Experience
+					</mat-error>
 				</mat-form-field>
 			</div>
 			<div class="editProfile__row2--department" >
@@ -63,12 +70,18 @@
 				<mat-form-field >
 					<mat-label>Email</mat-label>
 					<input matInput formControlName="email">
+					<mat-error>
+						Please enter the valid email address
+					</mat-error>
 				</mat-form-field>
 			</div>
 			<div class="editProfile__row4--contact">
 				<mat-form-field >
 					<mat-label>Contact</mat-label>
 					<input matInput formControlName="contact">
+					<mat-error>
+						Please enter the valid mobile number
+					</mat-error>
 				</mat-form-field>
 			</div>
 		</div>

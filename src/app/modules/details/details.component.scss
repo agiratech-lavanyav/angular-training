@@ -39,6 +39,7 @@
                 &--namefield{
                     background-color: #fff;
                     color: black;
+                    font-weight: 500;
                     position: absolute;
                     bottom: 24%;
                     left: 32%;
@@ -59,6 +60,9 @@
                 header{
                     font-size: 2em;
                     padding-left: 45px;
+                    color: black !important;
+                    font-weight: bold;
+
                 }
             }
 
@@ -71,6 +75,9 @@
 
                 tr,td{
                     padding: 0.8em 2em;
+                    color: black !important;
+                    font-weight: 500;
+
                 }
             }
         }

@@ -15,6 +15,7 @@ export class EditProfileComponent implements OnInit {
   empList: any;
   updateValue: any;
   employeeUpdate: any;
+  name: any;
 
  
   constructor(public dialogRef: MatDialogRef<EditProfileComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private route:Router, private formBuilder: FormBuilder) { }
@@ -32,6 +33,12 @@ export class EditProfileComponent implements OnInit {
     email: [(this.data[0].email),[Validators.required]],
     contact: [(this.data[0].contact),[Validators.required]],
   });
+
+  // getErrorMessage() {
+  //   return this.name.hasError('required') ? 'You must enter a value' :
+  //       this.name.hasError('name') ? 'Not a valid name' :
+  //           '';
+  // }
 
   saveDetail(){
     this.empUpdate = JSON.parse(localStorage.getItem('item')!);
