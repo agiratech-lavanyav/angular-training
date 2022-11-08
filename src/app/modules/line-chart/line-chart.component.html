@@ -1,15 +1,18 @@
 <div>
   <div class="home">
-    <button routerLink="/dashboard">Home</button>
+    <button routerLink="/dashboard">
+      Home
+        <!-- <mat-icon style="font-size:2em;color: #fff;">keyboard_arrow_left</mat-icon> -->
+    </button>
   </div>
-    <div class="div" style="display: block">
-      <canvas baseChart
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [legend]="lineChartLegend">
-              [chartType]="lineChartType">
-      </canvas>
-    </div>
+  <div class="div" style="display: block">
+    <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [legend]="lineChartLegend">
+            [chartType]="lineChartType">
+    </canvas>
+  </div>
 </div>
 
   

@@ -8,20 +8,20 @@
     margin: 1rem ;
     background-color: #fff;
     }
-  mat-toolbar {
+  .toolbar {
     background: #2C3E50;  
-    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  
-    background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50);  
+    background: linear-gradient(to right, #569bc9, #2C3E50); ;
   }
   mat-list-item:hover{
     cursor: pointer;
-    background-color: #fff;
-    color: black;
+    background-color: #2C3E50;
+    // color: black;
   }
   .example-sidenav{
     background: #2C3E50;  
-    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
-    background: linear-gradient(to right, #4CA1AF, #2C3E50); ;
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+    background: linear-gradient(to right, #569bc9, #2C3E50); ;
   }
   .span{
     padding: 20px;
@@ -29,8 +29,8 @@
   .div-section{
     border-radius: 20px;
     background: #2C3E50;  
-    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50); 
-    background: linear-gradient(to right, #4CA1AF, #2C3E50);
+    background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+    background: linear-gradient(to right, #569bc9, #2C3E50);
   }
   .employee-status{
     font-size: 20px;
@@ -184,7 +184,7 @@
           }
         }
         .todos:hover{
-          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          background: linear-gradient(to bottom right, #569bc9, #2C3E50); 
           color: #fff;
           box-shadow: 0 30px 90px #2C3E50; 
         }
@@ -200,7 +200,7 @@
           }
         }
         .review:hover{
-          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          background: linear-gradient(to bottom right, #569bc9, #2C3E50); 
           color: #fff;
           box-shadow: 0 30px 90px #2C3E50; 
         }
@@ -214,7 +214,7 @@
           }
         }
         .skills:hover{
-          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          background: linear-gradient(to bottom right, #569bc9, #2C3E50); 
           color: #fff;
           box-shadow: 0 30px 90px #2C3E50; 
         }
@@ -232,7 +232,7 @@
           }
         }
         .acheivements:hover{
-          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          background: linear-gradient(to bottom right, #569bc9, #2C3E50); 
           color: #fff;
           box-shadow: 0 30px 90px #2C3E50; 
         }
@@ -246,7 +246,7 @@
           }
         }
         .upcoming-holidays:hover{
-          background: linear-gradient(to bottom right, #4CA1AF, #2C3E50); 
+          background: linear-gradient(to bottom right, #569bc9, #2C3E50); 
           color: #fff;
           box-shadow: 0 30px 90px #2C3E50; 
         }

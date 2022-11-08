@@ -1,0 +1,82 @@
+::ng-deep app-details{
+
+    .home{
+        background: #2C3E50;  
+        background: -webkit-linear-gradient(to right, #569bc9, #2C3E50); 
+        background: linear-gradient(to right, #569bc9, #2C3E50); 
+        height: 70px;
+        button{
+            background-color: transparent;
+            border-style: none;
+            margin: 1.5em;
+        }
+        .icon:hover{
+            border-radius: 50px;
+            background-color: #2C3E50;
+        }
+    }
+
+    .profile{
+        display: flex;
+        font-size: 20px;
+
+        &__background{
+
+            width: 50%;
+
+            &--blob {
+            fill:  #569bc9; 
+            width: 40vmax;
+            position:relative;
+            
+                &--image{
+                    width: 350px;
+                    height: 500px;
+                    position: absolute;
+                    left: 24%;
+                    top: 10%;
+                }
+                &--namefield{
+                    background-color: #fff;
+                    color: black;
+                    position: absolute;
+                    bottom: 24%;
+                    left: 32%;
+                    padding: 1em 4em;
+                    border-radius: 10px;
+                }
+            }
+        }
+        &__info{
+            width: 50%;
+            margin-top: 1em;
+
+            &--title{
+                display: flex;
+                align-items: center;
+                padding-bottom: 30px;
+
+                header{
+                    font-size: 2em;
+                    padding-left: 45px;
+                }
+            }
+
+            table{
+                font-size: 1em;
+                padding: 4em 0em;
+                border: 2px solid;
+                border-radius: 20px;
+                // display: block;
+                overflow: scroll;
+
+                tr,td{
+                    padding: 0.8em 2em;
+                }
+            }
+        }
+    }
+
+    
+
+}

@@ -9,6 +9,7 @@ import { AuthguardGuard } from './providers/authguard.guard';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
+//import { ToolbarComponent } from './modules/toolbar/toolbar.component';
 
 
 
@@ -16,6 +17,7 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
   declarations: [
     AppComponent,
     LineChartComponent,
+    //ToolbarComponent,
   ],
   imports: [
     BrowserModule,
